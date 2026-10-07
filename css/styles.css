@@ -59,6 +59,18 @@
   --radius: 8px;
   --radius-lg: 12px;
 
+  /* Motion */
+  --dur-fast: 160ms;
+  --dur: 260ms;
+  --dur-slow: 560ms;
+  --dur-reveal: 720ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --reveal-distance: 14px;
+  --lift: -1px;
+  --nudge: 3px;
+  --stagger: 90ms;
+
   color-scheme: light;
 }
 
@@ -203,6 +215,28 @@ main:focus {
   border-bottom: 1px solid var(--border);
   -webkit-backdrop-filter: saturate(1.4) blur(12px);
   backdrop-filter: saturate(1.4) blur(12px);
+  transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+
+.header-observed .site-header:not(.is-scrolled) {
+  border-bottom-color: transparent;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 12px 28px -24px rgb(23 22 15 / 0.4);
+}
+
+.nav-open .site-header {
+  border-bottom-color: var(--border);
+}
+
+.scroll-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 8px;
+  pointer-events: none;
 }
 
 .header-inner {
@@ -263,19 +297,45 @@ main:focus {
   text-decoration: none;
 }
 
+.nav-list a {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
 .nav-list a:hover,
 .nav-list a[aria-current="page"] {
   color: var(--ink);
 }
 
-.nav-list a[aria-current="page"]::after {
+.nav-list a::after {
   content: "";
   position: absolute;
   right: 0;
   bottom: calc((var(--header-h) - 2.4rem) / -2);
   left: 0;
   height: 2px;
+  background: var(--border-strong);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-out), background-color var(--dur) var(--ease-out);
+}
+
+.nav-list a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-list a[aria-current="page"]::after {
   background: var(--accent);
+  transform: scaleX(1);
+}
+
+.nav-list .icon-external,
+.button .icon-external {
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.nav-list a:hover .icon-external,
+.button:hover .icon-external {
+  transform: translate(1px, -1px);
 }
 
 .nav-toggle {
@@ -349,7 +409,7 @@ main:focus {
     gap: 0.25rem 1.25rem;
   }
 
-  .nav-list a[aria-current="page"]::after {
+  .nav-list a::after {
     bottom: 0.25rem;
   }
 
@@ -357,11 +417,8 @@ main:focus {
     display: inline-flex;
   }
 
+  /* Hidden panels use visibility, so closed links are not focusable. */
   .js .site-nav {
-    display: none;
-  }
-
-  .js.nav-open .site-nav {
     position: absolute;
     top: 100%;
     right: 0;
@@ -373,23 +430,41 @@ main:focus {
     background: var(--bg);
     border-bottom: 1px solid var(--border);
     box-shadow: 0 16px 32px -16px rgb(23 22 15 / 0.18);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur) var(--ease-out), visibility 0s linear var(--dur);
   }
 
-  .js.nav-open .nav-list {
+  .js.nav-open .site-nav {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  .js .nav-list {
     display: block;
   }
 
-  .js.nav-open .nav-list li + li {
+  .js .nav-list li + li {
     border-top: 1px solid var(--border);
   }
 
-  .js.nav-open .nav-list a {
+  .js .nav-list a {
     display: flex;
     padding-block: 0.875rem;
     font-size: 1.0625rem;
   }
 
-  .js.nav-open .nav-list a[aria-current="page"]::after {
+  .js .nav-list a::after {
+    display: none;
+  }
+
+  .js .nav-list a[aria-current="page"]::after {
+    display: block;
     top: 0.875rem;
     right: auto;
     bottom: 0.875rem;
@@ -398,7 +473,7 @@ main:focus {
     height: auto;
   }
 
-  .js.nav-open .nav-cta {
+  .js .nav-cta {
     width: 100%;
     margin-top: 1rem;
   }
@@ -421,12 +496,30 @@ main:focus {
   font-weight: 550;
   line-height: 1.2;
   text-decoration: none;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
 }
 
 .button:hover {
   border-color: var(--ink);
   color: var(--ink);
+  transform: translateY(var(--lift));
+  box-shadow: 0 6px 14px -10px rgb(23 22 15 / 0.35);
+}
+
+.button:active {
+  transform: none;
+  box-shadow: none;
+  transition-duration: 60ms;
+}
+
+.button .icon-arrow,
+.announce .icon-arrow {
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.button:hover .icon-arrow,
+.announce:hover .icon-arrow {
+  transform: translateX(var(--nudge));
 }
 
 .button-primary {
@@ -439,6 +532,7 @@ main:focus {
   background: #33302a;
   border-color: #33302a;
   color: #fff;
+  box-shadow: 0 8px 18px -10px rgb(23 22 15 / 0.55);
 }
 
 .button-sm {
@@ -672,12 +766,19 @@ main:focus {
   height: 124%;
   max-width: none;
   color: var(--ink);
-  opacity: 0.08;
   pointer-events: none;
 }
 
-.hero-lines g + g {
+.hero-lines > g {
+  opacity: 0.08;
+}
+
+.hero-lines > g + g {
   color: var(--accent);
+}
+
+.hero-lines > .traces {
+  opacity: 0.4;
 }
 
 @media (min-width: 64rem) {
@@ -1787,6 +1888,497 @@ main:focus {
   .facts div {
     grid-template-columns: 1fr;
     gap: 0.125rem;
+  }
+}
+
+/* Motion
+   Everything below is progressive enhancement. Hidden "before" states only
+   apply under .motion, which site.js sets when IntersectionObserver exists
+   and the visitor has not asked for reduced motion. Without it, content is
+   simply visible. */
+
+/* Interaction feedback (all visitors with hover-capable pointers) */
+
+@media (hover: hover) {
+  .feature .icon,
+  .area .icon,
+  .panel .icon,
+  .principle .icon {
+    transition: transform var(--dur) var(--ease-out);
+  }
+
+  .feature:hover .icon,
+  .area:hover .icon,
+  .panel:hover .icon,
+  .principle:hover .icon {
+    transform: translateY(-2px);
+  }
+
+  .panel,
+  .finding,
+  .work-item {
+    transition: border-color var(--dur) var(--ease-out);
+  }
+
+  .panel:hover,
+  .finding:hover,
+  .work-item:hover {
+    border-color: var(--border-strong);
+  }
+
+  .feature {
+    transition: background-color var(--dur) var(--ease-out);
+  }
+
+  .feature:hover {
+    background: #fff;
+  }
+}
+
+.copy {
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.copy.is-done {
+  border-color: var(--ok-ink);
+  color: var(--ok-ink);
+}
+
+/* Hammerhead subnav: current section, set by a scrollspy in site.js. */
+.subnav a {
+  box-shadow: inset 0 -2px 0 transparent;
+  transition: color var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+
+.subnav a[aria-current="true"] {
+  color: var(--ink);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+/* Released status: a soft pulse that runs three times, then stops. */
+.motion .status-live::before {
+  animation: status-pulse 2.4s var(--ease-out) 1.2s 3;
+}
+
+@keyframes status-pulse {
+  0% { box-shadow: 0 0 0 0 rgb(44 85 32 / 0.35); }
+  100% { box-shadow: 0 0 0 6px rgb(44 85 32 / 0); }
+}
+
+/* Scroll reveals */
+
+.motion [data-reveal=""],
+.motion [data-reveal="stagger"] > *,
+.motion :is(.feature-grid, .principles)[data-reveal="stagger"] > * > * {
+  transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out);
+}
+
+.motion [data-reveal=""]:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+}
+
+/* Grids drawn with a 1px gap background fade their content, not their cells,
+   so the gap colour never shows through. */
+.motion [data-reveal="stagger"]:not(:is(.feature-grid, .principles)):not(.is-visible) > *,
+.motion :is(.feature-grid, .principles)[data-reveal="stagger"]:not(.is-visible) > * > * {
+  opacity: 0;
+  transform: translateY(calc(var(--reveal-distance) * 0.7));
+}
+
+.motion :is(.feature-grid, .principles)[data-reveal="stagger"] > * {
+  transition: none;
+}
+
+.motion [data-reveal="stagger"] > :nth-child(2),
+.motion [data-reveal="stagger"] > :nth-child(2) > * { transition-delay: calc(var(--stagger) * 1); }
+.motion [data-reveal="stagger"] > :nth-child(3),
+.motion [data-reveal="stagger"] > :nth-child(3) > * { transition-delay: calc(var(--stagger) * 2); }
+.motion [data-reveal="stagger"] > :nth-child(4),
+.motion [data-reveal="stagger"] > :nth-child(4) > * { transition-delay: calc(var(--stagger) * 3); }
+.motion [data-reveal="stagger"] > :nth-child(5),
+.motion [data-reveal="stagger"] > :nth-child(5) > * { transition-delay: calc(var(--stagger) * 4); }
+.motion [data-reveal="stagger"] > :nth-child(6),
+.motion [data-reveal="stagger"] > :nth-child(6) > * { transition-delay: calc(var(--stagger) * 5); }
+
+/* Areas of work: the rule above each area draws in from the left. */
+.motion .area-grid[data-reveal] .area {
+  position: relative;
+  border-top-color: transparent;
+}
+
+.motion .area-grid[data-reveal] .area::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-in-out);
+  transition-delay: inherit;
+}
+
+.motion .area-grid.is-visible .area::before {
+  transform: scaleX(1);
+}
+
+/* Finding classes: each colour bar draws in as its card arrives. */
+.motion .finding-grid[data-reveal] .finding {
+  position: relative;
+  border-top-color: var(--border);
+}
+
+.motion .finding-grid[data-reveal] .finding::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: -1px;
+  left: -1px;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--kind);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-in-out) 200ms;
+}
+
+.motion .finding-grid.is-visible .finding::after {
+  transform: scaleX(1);
+}
+
+.motion .finding-grid.is-visible > :nth-child(2)::after { transition-delay: calc(200ms + var(--stagger)); }
+.motion .finding-grid.is-visible > :nth-child(3)::after { transition-delay: calc(200ms + var(--stagger) * 2); }
+
+/* Audit approach: steps activate in order. The final state is also the
+   default, so the process reads the same without motion. */
+.steps li {
+  position: relative;
+}
+
+.steps li::before {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+  transition: background-color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+}
+
+.steps li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-in-out);
+}
+
+.motion .steps li:not(.is-visible)::before {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--ink-2);
+}
+
+.motion .steps li:not(.is-visible)::after {
+  transform: scaleX(0);
+}
+
+@media (min-width: 56rem) {
+  /* All four steps share a row, so stagger them to read left to right. */
+  .motion .steps li:nth-child(2)::before,
+  .motion .steps li:nth-child(2)::after { transition-delay: 220ms; }
+  .motion .steps li:nth-child(3)::before,
+  .motion .steps li:nth-child(3)::after { transition-delay: 440ms; }
+  .motion .steps li:nth-child(4)::before,
+  .motion .steps li:nth-child(4)::after { transition-delay: 660ms; }
+}
+
+/* Audit model diagram: plays once when it enters the viewport.
+   Each part waits, paused on its first keyframe, until .is-visible. */
+.motion .flow .flow-body > :is(:nth-child(1), :nth-child(2), :nth-child(3), :nth-child(4), :nth-child(6), :nth-child(7)),
+.motion .flow .flow-finding,
+.motion .flow .flow-finding::before,
+.motion .flow .flow-split::before,
+.motion .flow .flow-split::after,
+.motion .flow .flow-outputs::before,
+.motion .flow .flow-outputs > *,
+.motion .flow .flow-link::before {
+  animation-duration: var(--dur-slow);
+  animation-timing-function: var(--ease-out);
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+.motion .flow.is-visible .flow-body > *,
+.motion .flow.is-visible .flow-finding,
+.motion .flow.is-visible .flow-finding::before,
+.motion .flow.is-visible .flow-split::before,
+.motion .flow.is-visible .flow-split::after,
+.motion .flow.is-visible .flow-outputs::before,
+.motion .flow.is-visible .flow-outputs > *,
+.motion .flow.is-visible .flow-link::before {
+  animation-play-state: running;
+}
+
+/* 1. Repository input activates. */
+.motion .flow .flow-body > :nth-child(1) {
+  animation-name: flow-activate;
+  animation-duration: 1100ms;
+  animation-delay: 150ms;
+}
+
+/* 2. Connectors grow, carrying a small signal. */
+.motion .flow .flow-link {
+  transform-origin: top;
+  animation-name: flow-grow;
+  animation-duration: 380ms;
+}
+
+.motion .flow .flow-body > :nth-child(2) { animation-delay: 650ms; }
+.motion .flow .flow-body > :nth-child(4) { animation-delay: 1500ms; }
+.motion .flow .flow-body > :nth-child(7) { animation-delay: 2550ms; }
+
+.motion .flow .flow-link::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--hygiene-on-dark);
+  opacity: 0;
+  animation-name: flow-signal;
+  animation-duration: 600ms;
+  animation-timing-function: var(--ease-in-out);
+}
+
+.motion .flow .flow-body > :nth-child(2)::before { animation-delay: 700ms; }
+.motion .flow .flow-body > :nth-child(4)::before { animation-delay: 1550ms; }
+.motion .flow .flow-body > :nth-child(7)::before { animation-delay: 2600ms; }
+
+/* 3. SafeWalker receives the signal. */
+.motion .flow .flow-body > :nth-child(3) {
+  animation-name: flow-core;
+  animation-duration: 1300ms;
+  animation-delay: 1000ms;
+}
+
+/* 4. Finding classes resolve one after another. */
+.motion .flow .flow-split::before,
+.motion .flow .flow-split::after {
+  animation-name: flow-fade;
+  animation-delay: 1850ms;
+}
+
+.motion .flow .flow-finding {
+  animation-name: flow-activate;
+  animation-duration: 1000ms;
+}
+
+.motion .flow .flow-finding::before {
+  animation-name: flow-dot;
+}
+
+.motion .flow .flow-finding:nth-child(1),
+.motion .flow .flow-finding:nth-child(1)::before { animation-delay: 1950ms; }
+.motion .flow .flow-finding:nth-child(2),
+.motion .flow .flow-finding:nth-child(2)::before { animation-delay: 2120ms; }
+.motion .flow .flow-finding:nth-child(3),
+.motion .flow .flow-finding:nth-child(3)::before { animation-delay: 2290ms; }
+
+/* 5. Reports resolve. */
+.motion .flow .flow-body > :nth-child(6) {
+  animation-name: flow-fade;
+  animation-delay: 2400ms;
+}
+
+.motion .flow .flow-outputs::before {
+  animation-name: flow-fade;
+  animation-delay: 2850ms;
+}
+
+.motion .flow .flow-outputs > * {
+  animation-name: flow-resolve;
+}
+
+.motion .flow .flow-outputs > :nth-child(1) { animation-delay: 2950ms; }
+.motion .flow .flow-outputs > :nth-child(2) { animation-delay: 3080ms; }
+
+@keyframes flow-activate {
+  0% { opacity: 0.28; }
+  35% { opacity: 1; border-color: rgb(220 177 88 / 0.5); }
+  100% { opacity: 1; border-color: var(--dark-border); }
+}
+
+@keyframes flow-core {
+  0% { opacity: 0.28; box-shadow: inset 3px 0 0 var(--hygiene-on-dark), 0 0 0 0 rgb(220 177 88 / 0); }
+  30% { opacity: 1; box-shadow: inset 3px 0 0 var(--hygiene-on-dark), 0 0 0 0 rgb(220 177 88 / 0.18); }
+  100% { opacity: 1; box-shadow: inset 3px 0 0 var(--hygiene-on-dark), 0 0 0 10px rgb(220 177 88 / 0); }
+}
+
+@keyframes flow-grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes flow-signal {
+  0% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(1.375rem); }
+}
+
+@keyframes flow-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes flow-dot {
+  from { transform: scale(0.3); }
+  to { transform: scale(1); }
+}
+
+@keyframes flow-resolve {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Hero system lines draw outward from the diagram as it plays. */
+@supports selector(:has(*)) {
+  .motion .hero-lines path:not([stroke-dasharray]) {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: lines-draw 1400ms var(--ease-in-out) 600ms forwards paused;
+  }
+
+  .motion .hero-lines :is(circle, rect, path[stroke-dasharray]) {
+    opacity: 0;
+    animation: flow-fade 900ms var(--ease-out) 1700ms forwards paused;
+  }
+
+  .motion .hero-visual:has(.flow.is-visible) .hero-lines :is(path, circle, rect) {
+    animation-play-state: running;
+  }
+
+  .motion .hero-lines path:nth-child(even) {
+    animation-delay: 800ms;
+  }
+}
+
+@keyframes lines-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Ambient background (wide screens only)
+   A few connector signals and breathing nodes behind the hero diagram and
+   the SafeWalker section. Traces are invisible unless animating, so the
+   static artwork is the settled state. Animations stay paused unless the
+   area is on screen (.ambient-on, set by site.js). */
+
+.ambient-trace {
+  opacity: 0;
+}
+
+.section-field {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--on-dark);
+  pointer-events: none;
+}
+
+.has-field {
+  position: relative;
+  overflow: hidden;
+}
+
+.has-field > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-field > g {
+  opacity: 0.1;
+}
+
+.section-field > g + g {
+  color: var(--hygiene-on-dark);
+  opacity: 0.28;
+}
+
+.section-field > .traces {
+  opacity: 0.55;
+}
+
+/* Only where the page has real side margins for the field to sit in. */
+@media (min-width: 88rem) {
+  .section-field {
+    display: block;
+  }
+}
+
+.trace-hero-a { --tx: 139px; --cycle: 18s; --start: 5s; }
+.trace-hero-b { --tx: -102px; --cycle: 26s; --start: 11s; }
+.trace-field-a { --tx: 220px; --cycle: 19s; --start: 3s; }
+.trace-field-b { --tx: 280px; --cycle: 24s; --start: 9s; }
+.trace-field-c { --ty: 202px; --cycle: 29s; --start: 15s; }
+
+.node-a { --start: 4s; }
+.node-b { --start: 7s; }
+.node-c { --start: 10s; }
+
+@media (min-width: 64rem) {
+  .motion [data-ambient] .ambient-trace {
+    animation: ambient-trace var(--cycle) var(--ease-in-out) var(--start) infinite paused;
+  }
+
+  .motion [data-ambient] .ambient-node {
+    animation: ambient-breathe 9s ease-in-out var(--start) infinite alternate paused;
+  }
+
+  .motion [data-ambient].ambient-on :is(.ambient-trace, .ambient-node) {
+    animation-play-state: running;
+  }
+}
+
+/* Each signal travels for about the first 15% of its cycle, then rests. */
+@keyframes ambient-trace {
+  0% { opacity: 0; transform: translate(0, 0); }
+  3% { opacity: 1; }
+  13% { opacity: 1; }
+  16%, 100% { opacity: 0; transform: translate(var(--tx, 0), var(--ty, 0)); }
+}
+
+@keyframes ambient-breathe {
+  from { opacity: 1; }
+  to { opacity: 0.35; }
+}
+
+@media (max-width: 40rem) {
+  :root {
+    --reveal-distance: 10px;
+    --stagger: 60ms;
+  }
+
+  /* Keep the diagram sequence, drop the travelling signals. */
+  .motion .flow .flow-link::before {
+    display: none;
+  }
+}
+
+@media print {
+  .motion [data-reveal],
+  .motion [data-reveal] > *,
+  .motion [data-reveal] > * > * {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

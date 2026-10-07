@@ -43,7 +43,7 @@
           <li><a href="/hammerhead/">Hammerhead</a></li>
           <li><a href="/about/">About</a></li>
           <li><a href="/security/">Security</a></li>
-          <li><a href="https://github.com/talarurus" rel="noopener">GitHub <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
+          <li><a href="https://github.com/talarurus" rel="noopener">GitHub <svg class="icon icon-sm icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
         </ul>
         <a class="button button-primary button-sm nav-cta" href="/contact/">Contact</a>
       </nav>
@@ -54,32 +54,32 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div>
-          <a class="announce" href="/hammerhead/"><span class="status">Released</span> Hammerhead v0.1.0 <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="announce" href="/hammerhead/"><span class="status status-live">Released</span> Hammerhead v0.1.0 <svg class="icon icon-sm icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <h1 id="hero-title">Security, developer, and <span class="nowrap">local-first</span> software.</h1>
           <p class="lead hero-lead">Talarurus is an independent software organization. Its first release, Hammerhead, audits potentially untrusted software repositories on your own machine.</p>
           <div class="actions">
             <a class="button button-primary" href="/hammerhead/">Explore Hammerhead</a>
-            <a class="button" href="https://github.com/talarurus" rel="noopener">Talarurus on GitHub <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+            <a class="button" href="https://github.com/talarurus" rel="noopener">Talarurus on GitHub <svg class="icon icon-sm icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
           </div>
         </div>
-        <div class="hero-visual">
+        <div class="hero-visual" data-ambient>
           <svg class="hero-lines" viewBox="0 0 800 720" preserveAspectRatio="none" aria-hidden="true" focusable="false">
             <g fill="none" stroke="currentColor" stroke-width="1">
-              <path d="M78 190H40v60" vector-effect="non-scaling-stroke"/>
-              <path d="M78 470H24" vector-effect="non-scaling-stroke"/>
-              <path d="M633 150h67V90h60" vector-effect="non-scaling-stroke"/>
-              <path d="M633 330h157" stroke-dasharray="2 5" vector-effect="non-scaling-stroke"/>
-              <path d="M633 560h57v80h80" vector-effect="non-scaling-stroke"/>
-              <path d="M400 70V24h120" vector-effect="non-scaling-stroke"/>
-              <path d="M230 70V34" vector-effect="non-scaling-stroke"/>
-              <path d="M300 650v50H180" vector-effect="non-scaling-stroke"/>
-              <path d="M560 650v40" stroke-dasharray="2 5" vector-effect="non-scaling-stroke"/>
+              <path d="M78 190H40v60" pathLength="1" vector-effect="non-scaling-stroke"/>
+              <path d="M78 470H24" pathLength="1" vector-effect="non-scaling-stroke"/>
+              <path d="M633 150h67V90h60" pathLength="1" vector-effect="non-scaling-stroke"/>
+              <path d="M633 330h157" pathLength="1" stroke-dasharray="2 5" vector-effect="non-scaling-stroke"/>
+              <path d="M633 560h57v80h80" pathLength="1" vector-effect="non-scaling-stroke"/>
+              <path d="M400 70V24h120" pathLength="1" vector-effect="non-scaling-stroke"/>
+              <path d="M230 70V34" pathLength="1" vector-effect="non-scaling-stroke"/>
+              <path d="M300 650v50H180" pathLength="1" vector-effect="non-scaling-stroke"/>
+              <path d="M560 650v40" pathLength="1" stroke-dasharray="2 5" vector-effect="non-scaling-stroke"/>
               <circle cx="40" cy="254" r="3.5" vector-effect="non-scaling-stroke"/>
-              <circle cx="766" cy="90" r="3.5" vector-effect="non-scaling-stroke"/>
-              <circle cx="526" cy="24" r="3.5" vector-effect="non-scaling-stroke"/>
+              <g class="ambient-node node-a"><circle cx="766" cy="90" r="3.5" vector-effect="non-scaling-stroke"/></g>
+              <g class="ambient-node node-b"><circle cx="526" cy="24" r="3.5" vector-effect="non-scaling-stroke"/></g>
               <circle cx="230" cy="30" r="3.5" vector-effect="non-scaling-stroke"/>
               <circle cx="776" cy="640" r="3.5" vector-effect="non-scaling-stroke"/>
-              <circle cx="174" cy="700" r="3.5" vector-effect="non-scaling-stroke"/>
+              <g class="ambient-node node-c"><circle cx="174" cy="700" r="3.5" vector-effect="non-scaling-stroke"/></g>
               <rect x="15" y="466" width="8" height="8" vector-effect="non-scaling-stroke"/>
               <rect x="741" y="326" width="8" height="8" vector-effect="non-scaling-stroke"/>
             </g>
@@ -88,8 +88,12 @@
               <rect x="687" y="327" width="6" height="6"/>
               <rect x="557" y="693" width="6" height="6"/>
             </g>
+            <g class="traces" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <line class="ambient-trace trace-hero-a" x1="633" y1="330" x2="651" y2="330" vector-effect="non-scaling-stroke"/>
+              <line class="ambient-trace trace-hero-b" x1="282" y1="700" x2="300" y2="700" vector-effect="non-scaling-stroke"/>
+            </g>
           </svg>
-        <figure class="flow" aria-labelledby="flow-caption">
+        <figure class="flow" data-reveal="flow" aria-labelledby="flow-caption">
           <div class="flow-head">
             <strong>Hammerhead</strong>
             <span class="flow-label">Audit model</span>
@@ -134,50 +138,50 @@
 
     <section class="section" aria-labelledby="product-title">
       <div class="container">
-        <div class="section-head section-head-row">
+        <div class="section-head section-head-row" data-reveal>
           <div>
             <p class="eyebrow">Featured product</p>
             <h2 id="product-title">Audit a repository before you depend on it.</h2>
             <p class="lead">Hammerhead is defensive security tooling for auditing potentially untrusted software repositories. It is local-first, written in Go, and reports findings in three separate classes.</p>
           </div>
-          <a class="button" href="/hammerhead/">Product overview <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="button" href="/hammerhead/">Product overview <svg class="icon icon-sm icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
 
-        <div class="product-panel">
+        <div class="product-panel" data-reveal>
           <div class="panel-bar">
             <h3>Hammerhead</h3>
             <span class="status">Released v0.1.0</span>
             <span class="panel-meta">Go command-line tool</span>
-            <a class="arrow-link" href="/hammerhead/">Learn more <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="arrow-link" href="/hammerhead/">Learn more <svg class="icon icon-sm icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="feature-grid">
+          <div class="feature-grid" data-reveal="stagger">
             <div class="feature">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+              <svg class="icon icon-device" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
               <h4>Local-first</h4>
               <p>Audits run on your own machine, where the repository already is.</p>
             </div>
             <div class="feature">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+              <svg class="icon icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
               <h4>SafeWalker architecture</h4>
               <p>Hammerhead is built around a security-focused SafeWalker architecture.</p>
             </div>
             <div class="feature">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>
+              <svg class="icon icon-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>
               <h4>Security, Hygiene, Info</h4>
               <p>Hammerhead separates its findings into three classes: Security, Hygiene, and Info.</p>
             </div>
             <div class="feature">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></svg>
+              <svg class="icon icon-terminal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></svg>
               <h4>Terminal reports</h4>
               <p>Read results directly in your shell as part of a manual review.</p>
             </div>
             <div class="feature">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4H7a2 2 0 0 0-2 2v3a2 2 0 0 1-2 2 2 2 0 0 1 2 2v3a2 2 0 0 0 2 2h1M16 4h1a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2 2 2 0 0 0-2 2v3a2 2 0 0 1-2 2h-1"/></svg>
+              <svg class="icon icon-braces" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4H7a2 2 0 0 0-2 2v3a2 2 0 0 1-2 2 2 2 0 0 1 2 2v3a2 2 0 0 0 2 2h1M16 4h1a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2 2 2 0 0 0-2 2v3a2 2 0 0 1-2 2h-1"/></svg>
               <h4>JSON reports</h4>
               <p>Structured output for scripts and other tools.</p>
             </div>
             <div class="feature">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>
+              <svg class="icon icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>
               <h4>Written in Go</h4>
               <p>A single command-line tool, used by hand or from your own automation.</p>
             </div>
@@ -188,26 +192,26 @@
 
     <section class="section section-sunk" aria-labelledby="areas-title">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <p class="eyebrow">Areas of work</p>
           <h2 id="areas-title">Three areas. One release so far.</h2>
           <p class="lead">Talarurus builds in three areas. Hammerhead is the first release. Work in the other areas will be published when it is ready.</p>
         </div>
-        <div class="area-grid">
+        <div class="area-grid" data-reveal="stagger">
           <article class="area">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            <svg class="icon icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
             <h3>Security tooling</h3>
             <p>Defensive tools for examining software before it is trusted.</p>
-            <p class="area-status"><span class="status">Released</span><a class="arrow-link" href="/hammerhead/">Hammerhead v0.1.0 <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+            <p class="area-status"><span class="status">Released</span><a class="arrow-link" href="/hammerhead/">Hammerhead v0.1.0 <svg class="icon icon-sm icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
           </article>
           <article class="area">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>
+            <svg class="icon icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>
             <h3>Developer tooling</h3>
             <p>Focused tools for the day-to-day work of building and maintaining software.</p>
             <p class="area-status"><span class="status status-neutral">No public release yet</span></p>
           </article>
           <article class="area">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+            <svg class="icon icon-device" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
             <h3>Local-first software / AI</h3>
             <p>Software, including AI, that runs on hardware you control and keeps your data there.</p>
             <p class="area-status"><span class="status status-neutral">No public release yet</span></p>
@@ -218,28 +222,28 @@
 
     <section class="section section-dark" aria-labelledby="principles-title">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <p class="eyebrow">Principles</p>
           <h2 id="principles-title">How Talarurus builds software.</h2>
         </div>
-        <div class="principles">
+        <div class="principles" data-reveal="stagger">
           <div class="principle">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            <svg class="icon icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
             <h3>Defensive by design</h3>
             <p>Security is the starting assumption. Hammerhead is built around a security-focused SafeWalker architecture.</p>
           </div>
           <div class="principle">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+            <svg class="icon icon-device" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
             <h3>Local control</h3>
             <p>Software that runs where your code and data already are: on your own machine.</p>
           </div>
           <div class="principle">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5 12 5s9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+            <svg class="icon icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5 12 5s9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7Z"/><circle cx="12" cy="12" r="2.5"/></svg>
             <h3>Understandable output</h3>
             <p>Results should be clear enough to act on, for people and for tools.</p>
           </div>
           <div class="principle">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg class="icon icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
             <h3>Focused tools</h3>
             <p>Each tool has a defined job and a clear boundary.</p>
           </div>
@@ -248,7 +252,7 @@
     </section>
 
     <section class="section" aria-labelledby="about-title">
-      <div class="container split">
+      <div class="container split" data-reveal>
         <div>
           <p class="eyebrow">About</p>
           <h2 id="about-title">An independent software organization.</h2>
@@ -256,20 +260,20 @@
         <div class="split-body">
           <p class="lead">Talarurus was founded in 2026 to build security, developer, and local-first software.</p>
           <p>It takes its name from <i>Talarurus</i>, a genus of armored dinosaur.</p>
-          <p><a class="arrow-link" href="/about/">About Talarurus <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          <p><a class="arrow-link" href="/about/">About Talarurus <svg class="icon icon-sm icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
         </div>
       </div>
     </section>
 
     <section class="section" aria-labelledby="cta-title">
       <div class="container">
-        <div class="cta">
+        <div class="cta" data-reveal>
           <div>
             <h2 id="cta-title">Follow the work.</h2>
             <p>Find Talarurus on GitHub, or get in touch at <a href="mailto:ammaar@talarurus.com">ammaar@talarurus.com</a>.</p>
           </div>
           <div class="actions">
-            <a class="button button-primary" href="https://github.com/talarurus" rel="noopener">GitHub <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+            <a class="button button-primary" href="https://github.com/talarurus" rel="noopener">GitHub <svg class="icon icon-sm icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
             <a class="button" href="/contact/">Contact</a>
             <a class="button" href="/work/">View work</a>
           </div>
