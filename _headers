@@ -1,5 +1,6 @@
 # Cloudflare static asset headers. See README.md.
 /*
+  Cache-Control: public, no-transform
   Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
@@ -7,8 +8,21 @@
   Cross-Origin-Opener-Policy: same-origin
   X-Frame-Options: DENY
 
+# HTML remains revalidated. no-transform prevents edge script injection and email rewriting.
+/
+  Cache-Control: max-age=0, must-revalidate
+
+/:page/
+  Cache-Control: max-age=0, must-revalidate
+
+/:page/:subpage/
+  Cache-Control: max-age=0, must-revalidate
+
+/404.html
+  Cache-Control: max-age=0, must-revalidate
+
 /assets/fonts/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: max-age=31536000, immutable
 
 /.well-known/security.txt
   Content-Type: text/plain; charset=utf-8

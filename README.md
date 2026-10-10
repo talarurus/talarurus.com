@@ -77,8 +77,13 @@ local routes and references, and check that the approved logos and security
 headers are unchanged. After Cloudflare's deployment succeeds, verify the actual
 custom domain, all routes and assets, CSP, interactions, reduced motion, and
 unknown-path handling. Confirm that internal paths such as `/brand/` and `/docs/`
-return 404. Preserve Cloudflare Web Analytics and script injection as disabled,
-consistent with the Privacy Policy and CSP.
+return 404. The `Cache-Control: public, no-transform` response directive prevents
+Cloudflare from injecting Web Analytics scripts or rewriting email addresses,
+consistent with the Privacy Policy, non-JavaScript contact links, and CSP. HTML
+responses are revalidated; the existing immutable font cache is retained. This
+also opts out of edge payload transformations, which can affect compression.
+See Cloudflare's [Web Analytics FAQ](https://developers.cloudflare.com/web-analytics/faq/)
+and [email obfuscation documentation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/).
 
 ## Hammerhead distribution follow-up
 
