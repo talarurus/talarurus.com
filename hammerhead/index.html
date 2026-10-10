@@ -1,358 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hammerhead: Local-first repository auditing | Talarurus</title>
-  <meta name="description" content="Hammerhead is a local-first command-line tool, written in Go, for auditing potentially untrusted software repositories. It reports Security, Hygiene, and Info findings in the terminal or as JSON.">
-  <link rel="canonical" href="https://talarurus.com/hammerhead/">
-  <meta name="theme-color" content="#f6f4ef">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Talarurus">
-  <meta property="og:title" content="Hammerhead: Local-first repository auditing | Talarurus">
-  <meta property="og:description" content="Hammerhead is a local-first command-line tool, written in Go, for auditing potentially untrusted software repositories. It reports Security, Hygiene, and Info findings in the terminal or as JSON.">
-  <meta property="og:url" content="https://talarurus.com/hammerhead/">
-  <meta property="og:image" content="https://talarurus.com/assets/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Talarurus: Security, developer, and local-first software.">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.ico" sizes="32x32">
-  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="preload" href="/assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/styles.css">
-  <script src="/js/site.js"></script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/">
-        <img src="/assets/logo.svg" alt="" width="32" height="32">
-        <span>Talarurus</span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-        Menu
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a href="/work/">Work</a></li>
-          <li><a href="/hammerhead/" aria-current="page">Hammerhead</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/security/">Security</a></li>
-          <li><a href="https://github.com/talarurus" rel="noopener">GitHub <svg class="icon icon-sm icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
-        </ul>
-        <a class="button button-primary button-sm nav-cta" href="/contact/">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main" tabindex="-1">
-    <section class="page-hero" aria-labelledby="page-title">
-      <div class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <ol>
-            <li><a href="/work/">Work</a></li>
-            <li><span aria-current="page">Hammerhead</span></li>
-          </ol>
-        </nav>
-        <div class="page-hero-grid">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hammerhead | Talarurus</title>
+    <meta name="description" content="Hammerhead v0.1.0 is Talarurus’s local-first repository security auditing CLI. Review findings, documentation, and release details.">
+    <link rel="canonical" href="https://talarurus.com/hammerhead/">
+    <meta name="theme-color" content="#f7f5f0">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Talarurus">
+    <meta property="og:title" content="Hammerhead | Talarurus">
+    <meta property="og:description" content="Hammerhead v0.1.0 is Talarurus’s local-first repository security auditing CLI. Review findings, documentation, and release details.">
+    <meta property="og:url" content="https://talarurus.com/hammerhead/">
+    <meta property="og:image" content="https://talarurus.com/assets/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Talarurus: Security, developer, and local-first software.">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="preload" href="/assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/site.js" defer></script>
+  </head>
+  <body class="page-hammerhead">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="header">
+      <div class="wrap header-inner"><a class="brand" href="/" aria-label="Talarurus home"><img src="/assets/talarurus-logo.svg" width="116" height="28" alt="Talarurus"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+        <nav id="navigation" aria-label="Main navigation"><a href="/work/">Work</a><a href="/hammerhead/" aria-current="page">Hammerhead</a><a href="/about/">About</a><a class="nav-contact" href="/contact/">Contact <span aria-hidden="true">↗</span></a></nav>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="product-hero wrap"><a class="breadcrumb" href="/work/">Work / Hammerhead</a>
+        <div class="product-heading">
           <div>
-            <div class="product-title">
-              <h1 id="page-title">Hammerhead</h1>
-              <span class="status status-live">Released v0.1.0</span>
-            </div>
-            <p class="lead">Audit potentially untrusted software repositories on your own machine.</p>
-            <p class="lead">Hammerhead is a defensive security tool from Talarurus: a local-first command-line tool written in Go. Hammerhead is built around a security-focused SafeWalker architecture.</p>
-            <div class="actions">
-              <a class="button button-primary" href="#approach">How it works</a>
-              <a class="button" href="https://github.com/talarurus" rel="noopener">Talarurus on GitHub <svg class="icon icon-sm icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-            </div>
+            <p class="kicker">HAMMERHEAD <span class="badge ">v0.1.0 released</span></p>
+            <h1>Audit a repository.<br> Before you run it.</h1>
+            <p class="hero-lead">A local-first command-line tool for auditing potentially untrusted software repositories. Written in Go. Designed for clear findings and local control.</p>
+            <div class="actions"><a class="button primary" href="/hammerhead/release/">Release details<span aria-hidden="true">→</span></a><a class="button " href="/hammerhead/docs/">Read documentation<span aria-hidden="true">→</span></a></div>
+            <p class="release-secondary">v0.1.0 released · Next iteration in development</p>
+            <p class="availability-note">Public download link unavailable</p>
           </div>
-          <section class="details" aria-labelledby="details-title">
-            <h2 id="details-title">Release details</h2>
-            <dl>
-              <div><dt>Current version</dt><dd>0.1.0</dd></div>
-              <div><dt>Status</dt><dd>Released</dd></div>
-              <div><dt>Category</dt><dd>Defensive security tooling</dd></div>
-              <div><dt>Language</dt><dd>Go</dd></div>
-              <div><dt>Interface</dt><dd>Command line</dd></div>
-              <div><dt>Model</dt><dd>Local-first</dd></div>
-              <div><dt>Findings</dt><dd>Security, Hygiene, Info</dd></div>
-              <div><dt>Reports</dt><dd>Terminal, JSON</dd></div>
-            </dl>
-          </section>
         </div>
-      </div>
-    </section>
-
-    <nav class="subnav" aria-label="On this page">
-      <div class="container">
-        <ul>
-          <li><a href="#approach">Approach</a></li>
-          <li><a href="#safewalker">SafeWalker</a></li>
-          <li><a href="#findings">Findings</a></li>
-          <li><a href="#reports">Reports</a></li>
-          <li><a href="#local-first">Local-first</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <section id="approach" class="section" aria-labelledby="approach-title">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">Approach</p>
-          <h2 id="approach-title">How Hammerhead approaches repository auditing</h2>
-          <p class="lead">Hammerhead is made for the moment before you trust a repository: when you have the code but have not yet decided to depend on it.</p>
-        </div>
-        <ol class="steps">
-          <li data-reveal="step">
-            <h3>Run it locally</h3>
-            <p>Use the Hammerhead CLI on your own machine, against a repository you want to examine.</p>
-          </li>
-          <li data-reveal="step">
-            <h3>Audit the repository</h3>
-            <p>Hammerhead audits the potentially untrusted repository. Hammerhead is built around a security-focused SafeWalker architecture.</p>
-          </li>
-          <li data-reveal="step">
-            <h3>Classify findings</h3>
-            <p>Each finding is reported as Security, Hygiene, or Info.</p>
-          </li>
-          <li data-reveal="step">
-            <h3>Read the report</h3>
-            <p>Review results in the terminal, or take the JSON output into your own tools.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="safewalker" class="section section-dark has-field" data-ambient aria-labelledby="safewalker-title">
-      <svg class="section-field" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-        <g fill="none" stroke="currentColor" stroke-width="1">
-          <path d="M32 120H90V300H110" vector-effect="non-scaling-stroke"/>
-          <path d="M32 470H60V560" vector-effect="non-scaling-stroke"/>
-          <path d="M1408 200H1350V420H1330" vector-effect="non-scaling-stroke"/>
-          <path d="M1408 520H1395V600" vector-effect="non-scaling-stroke"/>
-          <path d="M520 24V60H760V28" vector-effect="non-scaling-stroke"/>
-          <path d="M220 620V600H520" vector-effect="non-scaling-stroke"/>
-          <path d="M980 620V612H1180V594" vector-effect="non-scaling-stroke"/>
-          <rect x="24" y="116" width="8" height="8" vector-effect="non-scaling-stroke"/>
-          <rect x="24" y="466" width="8" height="8" vector-effect="non-scaling-stroke"/>
-          <rect x="1408" y="196" width="8" height="8" vector-effect="non-scaling-stroke"/>
-          <rect x="1408" y="516" width="8" height="8" vector-effect="non-scaling-stroke"/>
-          <rect x="86" y="116" width="8" height="8" vector-effect="non-scaling-stroke"/>
-          <rect x="1346" y="196" width="8" height="8" vector-effect="non-scaling-stroke"/>
-          <g class="ambient-node node-a"><circle cx="110" cy="300" r="3" vector-effect="non-scaling-stroke"/></g>
-          <circle cx="60" cy="564" r="3" vector-effect="non-scaling-stroke"/>
-          <g class="ambient-node node-b"><circle cx="1330" cy="420" r="3" vector-effect="non-scaling-stroke"/></g>
-          <circle cx="1395" cy="604" r="3" vector-effect="non-scaling-stroke"/>
-          <circle cx="520" cy="20" r="3" vector-effect="non-scaling-stroke"/>
-          <circle cx="760" cy="24" r="3" vector-effect="non-scaling-stroke"/>
-          <circle cx="220" cy="624" r="3" vector-effect="non-scaling-stroke"/>
-          <circle cx="520" cy="600" r="3" vector-effect="non-scaling-stroke"/>
-          <circle cx="980" cy="624" r="3" vector-effect="non-scaling-stroke"/>
-          <g class="ambient-node node-c"><circle cx="1180" cy="590" r="3" vector-effect="non-scaling-stroke"/></g>
-        </g>
-        <g fill="currentColor">
-          <rect x="637" y="57" width="6" height="6"/>
-          <rect x="87" y="207" width="6" height="6"/>
-          <rect x="1347" y="307" width="6" height="6"/>
-        </g>
-        <g class="traces" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-          <line class="ambient-trace trace-field-a" x1="520" y1="60" x2="540" y2="60" vector-effect="non-scaling-stroke"/>
-          <line class="ambient-trace trace-field-b" x1="220" y1="600" x2="240" y2="600" vector-effect="non-scaling-stroke"/>
-          <line class="ambient-trace trace-field-c" x1="1350" y1="200" x2="1350" y2="218" vector-effect="non-scaling-stroke"/>
-        </g>
-      </svg>
-      <div class="container hero-grid">
-        <div class="stack" data-reveal>
-          <p class="eyebrow">Architecture</p>
-          <h2 id="safewalker-title" class="h2">SafeWalker</h2>
-          <p class="lead">Hammerhead is built around a security-focused SafeWalker architecture.</p>
-          <p>Hammerhead is defensive security tooling for auditing potentially untrusted software repositories. It is local-first, written in Go, and reports Security, Hygiene, and Info findings in the terminal or as JSON.</p>
-        </div>
-        <figure class="flow" data-reveal="flow" aria-labelledby="flow-caption">
-          <div class="flow-head">
-            <strong>Hammerhead</strong>
-            <span class="flow-label">Audit model</span>
-            <span class="flow-pill">Runs locally</span>
+        <figure class="report wide" >
+          <div class="report-top"><span class="report-name"><span aria-hidden="true">›_</span> HAMMERHEAD</span><span>v0.1.0</span></div>
+          <div class="report-toolbar">
+            <div class="report-tabs" role="tablist" aria-label="Report format"><button id="product-a-terminal-tab" role="tab" aria-selected="true" aria-controls="product-a-terminal">Terminal</button><button id="product-a-json-tab" role="tab" aria-selected="false" aria-controls="product-a-json" tabindex="-1">JSON</button></div>
+            <button class="copy-command" data-copy="hammerhead audit ./demo-repository --quiet" hidden>Copy command</button></div>
+          <div id="product-a-terminal" role="tabpanel" aria-labelledby="product-a-terminal-tab" tabindex="0">
+            <p class="command"><span aria-hidden="true">$ </span>hammerhead audit ./demo-repository --quiet</p>
+            <pre class="output"><span class="high">[HIGH] [FILE-001] certs/demo.key Private key file</span>
+<span class="high">[HIGH] [SEC-001] certs/demo.key:1 Cryptographic private key in file content</span>
+<span class="low">[LOW] [PROJ-001] LICENSE Missing project LICENSE</span>
+<span class="info">[INFO] [PROJ-002] go.mod Project runtime: Go</span></pre>
+            <div class="report-result"><span class="high">Exit status 1</span><span>Security threshold reached</span></div>
           </div>
-          <div class="flow-body" aria-hidden="true">
-            <div class="flow-node">
-              <span class="flow-kicker">Input</span>
-              <span class="flow-title">Software repository</span>
-              <span class="flow-note">Potentially untrusted</span>
-            </div>
-            <div class="flow-link"></div>
-            <div class="flow-node flow-node-core">
-              <span class="flow-kicker">Hammerhead, Go CLI</span>
-              <span class="flow-title">SafeWalker architecture</span>
-              <span class="flow-note">Security-focused</span>
-            </div>
-            <div class="flow-link"></div>
-            <div class="flow-split">
-              <div class="flow-finding kind-security">Security</div>
-              <div class="flow-finding kind-hygiene">Hygiene</div>
-              <div class="flow-finding kind-info">Info</div>
-            </div>
-            <div class="flow-merge"></div>
-            <div class="flow-link"></div>
-            <div class="flow-outputs">
-              <div class="flow-node">
-                <span class="flow-kicker">Report</span>
-                <span class="flow-title">Terminal</span>
-              </div>
-              <div class="flow-node">
-                <span class="flow-kicker">Report</span>
-                <span class="flow-title">JSON</span>
-              </div>
-            </div>
+          <div id="product-a-json" role="tabpanel" aria-labelledby="product-a-json-tab" tabindex="0" hidden>
+            <p class="command"><span aria-hidden="true">$ </span>hammerhead audit ./demo-repository --output json</p>
+            <pre class="output json-output">{
+  &quot;schema&quot;: &quot;hammerhead/v0.1&quot;,
+  &quot;version&quot;: &quot;0.1.0&quot;,
+  &quot;summary&quot;: {
+    &quot;total_findings&quot;: 4,
+    &quot;checks_run&quot;: 7,
+    &quot;security_risk&quot;: &quot;high&quot;,
+    &quot;max_severity&quot;: &quot;high&quot;,
+    &quot;security_findings_count&quot;: 2,
+    &quot;hygiene_findings_count&quot;: 1,
+    &quot;info_findings_count&quot;: 1,
+    &quot;by_severity&quot;: {
+      &quot;high&quot;: 2,
+      &quot;info&quot;: 1,
+      &quot;low&quot;: 1
+    },
+    &quot;by_class&quot;: {
+      &quot;hygiene&quot;: 1,
+      &quot;info&quot;: 1,
+      &quot;security&quot;: 2
+    }
+  }
+}</pre>
+            <div class="report-result"><span class="high">Exit status 1</span><span>JSON summary excerpt</span></div>
           </div>
-          <figcaption id="flow-caption" class="flow-caption">Hammerhead audits a potentially untrusted repository on your machine, sorts findings into Security, Hygiene, and Info, and reports them in the terminal or as JSON.</figcaption>
+          <figcaption>Actual v0.1.0 output on a synthetic repository. No usable credentials.</figcaption>
         </figure>
-      </div>
-    </section>
-
-    <section id="findings" class="section" aria-labelledby="findings-title">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">Findings</p>
-          <h2 id="findings-title">Three finding classes</h2>
-          <p class="lead">Hammerhead separates its findings into three classes. Each class is reported separately from the other two.</p>
-        </div>
-        <div class="finding-grid" data-reveal="stagger">
-          <article class="finding finding-security">
-            <h3>Security</h3>
-            <p>Findings Hammerhead reports in the Security class, kept separate from Hygiene and Info findings.</p>
-          </article>
-          <article class="finding finding-hygiene">
-            <h3>Hygiene</h3>
-            <p>Findings Hammerhead reports in the Hygiene class, kept separate from Security and Info findings.</p>
-          </article>
-          <article class="finding finding-info">
-            <h3>Info</h3>
-            <p>Findings Hammerhead reports in the Info class, kept separate from Security and Hygiene findings.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="reports" class="section section-sunk" aria-labelledby="reports-title">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">Reports</p>
-          <h2 id="reports-title">Terminal and JSON reports</h2>
-          <p class="lead">The same findings, in the format that suits the job.</p>
-        </div>
-        <div class="panel-grid" data-reveal="stagger">
-          <article class="panel">
-            <svg class="icon icon-terminal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></svg>
-            <h3>Terminal</h3>
-            <p>A human-readable report for reviewing results directly in your shell.</p>
-          </article>
-          <article class="panel">
-            <svg class="icon icon-braces" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4H7a2 2 0 0 0-2 2v3a2 2 0 0 1-2 2 2 2 0 0 1 2 2v3a2 2 0 0 0 2 2h1M16 4h1a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2 2 2 0 0 0-2 2v3a2 2 0 0 1-2 2h-1"/></svg>
-            <h3>JSON</h3>
-            <p>Machine-readable output for scripts, pipelines, and other tools.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="local-first" class="section" aria-labelledby="local-title">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">Model</p>
-          <h2 id="local-title">Local-first, written in Go</h2>
-        </div>
-        <div class="panel-grid" data-reveal="stagger">
-          <article class="panel">
-            <svg class="icon icon-device" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
-            <h3>Local-first</h3>
-            <p>Hammerhead is local-first. Audits run on your own machine, where the repository already is.</p>
-          </article>
-          <article class="panel">
-            <svg class="icon icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>
-            <h3>Go command-line tool</h3>
-            <p>Hammerhead is written in Go and used from the command line, so it fits manual review and scripted workflows alike.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="cta-title">
-      <div class="container">
-        <div class="cta" data-reveal>
+        <dl class="spec-strip">
           <div>
-            <h2 id="cta-title">Hammerhead v0.1.0 is released.</h2>
-            <p>Follow Talarurus on GitHub for project updates. Found a vulnerability in Hammerhead? <a href="/security/">Report it privately</a>.</p>
-          </div>
-          <div class="actions">
-            <a class="button button-primary" href="https://github.com/talarurus" rel="noopener">GitHub <svg class="icon icon-sm icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-            <a class="button" href="/security/">Security</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a class="brand" href="/">
-            <img src="/assets/logo.svg" alt="" width="32" height="32">
-            <span>Talarurus</span>
-          </a>
-          <p>Security, developer, and local-first software.</p>
-          <a class="footer-email" href="mailto:ammaar@talarurus.com">ammaar@talarurus.com</a>
-        </div>
-        <nav class="footer-nav" aria-label="Footer">
-          <div>
-            <h2>Products</h2>
-            <ul>
-              <li><a href="/hammerhead/">Hammerhead</a></li>
-              <li><a href="/work/">All work</a></li>
-            </ul>
+            <dt>MODEL</dt>
+            <dd>Local-first</dd>
           </div>
           <div>
-            <h2>Company</h2>
-            <ul>
-              <li><a href="/about/">About</a></li>
-              <li><a href="/contact/">Contact</a></li>
-            </ul>
+            <dt>LANGUAGE</dt>
+            <dd>Go</dd>
           </div>
           <div>
-            <h2>Security</h2>
-            <ul>
-              <li><a href="/security/">Security</a></li>
-              <li><a href="/security/#reporting">Responsible disclosure</a></li>
-              <li><a href="/.well-known/security.txt">security.txt</a></li>
-            </ul>
+            <dt>REPORTS</dt>
+            <dd>Terminal + JSON</dd>
           </div>
           <div>
-            <h2>Resources</h2>
-            <ul>
-              <li><a href="https://github.com/talarurus" rel="noopener">GitHub</a></li>
-            </ul>
+            <dt>LICENSE</dt>
+            <dd>Apache 2.0</dd>
           </div>
+        </dl>
+      </section>
+      <nav class="chapter-nav" aria-label="On this page">
+        <div class="wrap"><a href="#overview">Overview</a><a href="#get-started">Get started</a><a href="#boundaries">Security model</a><a href="/hammerhead/docs/">Documentation <span aria-hidden="true">→</span></a></div>
+      </nav>
+      <section class="overview light" id="overview">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">REPOSITORY AUDITING</p>
+              <h2>Inspect locally.<br> Make an informed decision.</h2>
+            </div>
+            <p>Hammerhead audits the working tree without running its build scripts or package managers. Readable terminal output and structured JSON fit manual reviews and your own automation.</p>
+          </div>
+          <div class="workflow">
+            <div><span>01</span>
+              <h3>Choose a repository.</h3>
+              <p>Run the CLI against a local working tree.</p>
+            </div>
+            <div><span>02</span>
+              <h3>Review the findings.</h3>
+              <p>Security, Hygiene, and Info remain separate.</p>
+            </div>
+            <div><span>03</span>
+              <h3>Use the report.</h3>
+              <p>Read the terminal output or process JSON in your tools.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="getting-started wrap" id="get-started">
+        <div>
+          <p class="kicker">GET STARTED</p>
+          <h2>One command.<br> A useful report.</h2>
+          <p>Hammerhead v0.1.0 is a command-line release for macOS and Linux. Review the release details and documentation before running your first audit.</p>
+          <a class="text-link" href="/hammerhead/release/">Version and release details <span aria-hidden="true">→</span></a></div>
+        <div class="command-list">
+          <article>
+            <h3>Verify the release</h3>
+            <code>hammerhead version</code></article>
+          <article>
+            <h3>Audit the current repository</h3>
+            <code>hammerhead audit .</code></article>
+          <article>
+            <h3>Write a JSON report</h3>
+            <code>hammerhead audit . --output json &gt; audit.json</code></article>
+          <p class="caption">Exit 1 means a Security finding reached the selected threshold. Hygiene and Info do not trigger finding-based failure.</p>
+        </div>
+      </section>
+      <section class="boundaries ink-section" id="boundaries">
+        <div class="wrap boundaries-grid">
           <div>
-            <h2>Legal</h2>
-            <ul>
-              <li><a href="/privacy/">Privacy</a></li>
-              <li><a href="/terms/">Terms</a></li>
-            </ul>
-          </div>
-        </nav>
+            <p class="kicker">THE SECURITY MODEL</p>
+            <h2>Clear boundaries.<br> Honest expectations.</h2>
+            <p>SafeWalker uses guarded reads and symlink containment checks. These are defense-in-depth measures, not a sandbox or a guarantee of safety.</p>
+            <a class="text-link" href="/hammerhead/docs/#security-model">Read the security model <span aria-hidden="true">↗</span></a></div>
+          <div class="disclosures"><details open><summary>What v0.1.0 inspects</summary>
+            <p>The current working tree, supported sensitive filenames and credential patterns, repository hygiene, and project context.</p>
+            </details><details><summary>What it does not do</summary>
+            <p>It does not scan Git history, validate active credentials, provide CVE database scanning, or perform semantic SAST analysis.</p>
+            </details><details><summary>Coverage and limits</summary>
+            <p>Exclusions, unreadable files, size bounds, partial traversal, and check failures can limit coverage. Exit 0 is a threshold result, not a guarantee of safety.</p>
+            </details><a class="text-link" href="/security/">Report a vulnerability privately <span aria-hidden="true">→</span></a></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-main">
+          <div class="footer-identity"><a class="brand" href="/"><img src="/assets/talarurus-logo.svg" width="116" height="28" alt="Talarurus"></a>
+            <p>Independent software studio.<br>Security, developer, and local-first software.</p>
+            <a class="text-link" href="mailto:ammaar@talarurus.com">ammaar@talarurus.com <span aria-hidden="true">↗</span></a></div>
+          <nav class="footer-links" aria-label="Footer">
+            <div>
+              <h3>Studio</h3>
+              <a href="/work/">Work</a><a href="/about/">About</a><a href="/contact/">Contact</a></div>
+            <div>
+              <h3>Software</h3>
+              <a href="/hammerhead/">Hammerhead</a><a href="/hammerhead/docs/">Documentation</a><a href="https://github.com/talarurus">GitHub ↗</a></div>
+            <div>
+              <h3>Trust</h3>
+              <a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+          </nav>
+        </div>
+        <div class="footer-bottom"><span>© 2026 Talarurus</span>
+          <div><a href="/.well-known/security.txt">security.txt</a></div>
+        </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Talarurus</p>
-        <p>talarurus.com</p>
-      </div>
-    </div>
-  </footer>
-</body>
+    </footer>
+    <p class="sr-only" role="status" id="copy-status"></p>
+  </body>
 </html>

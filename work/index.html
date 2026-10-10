@@ -1,187 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Work | Talarurus</title>
-  <meta name="description" content="Software released by Talarurus, and the areas it builds in: security tooling, developer tooling, and local-first software.">
-  <link rel="canonical" href="https://talarurus.com/work/">
-  <meta name="theme-color" content="#f6f4ef">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Talarurus">
-  <meta property="og:title" content="Work | Talarurus">
-  <meta property="og:description" content="Software released by Talarurus, and the areas it builds in: security tooling, developer tooling, and local-first software.">
-  <meta property="og:url" content="https://talarurus.com/work/">
-  <meta property="og:image" content="https://talarurus.com/assets/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Talarurus: Security, developer, and local-first software.">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.ico" sizes="32x32">
-  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="preload" href="/assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/styles.css">
-  <script src="/js/site.js"></script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/">
-        <img src="/assets/logo.svg" alt="" width="32" height="32">
-        <span>Talarurus</span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-        Menu
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a href="/work/" aria-current="page">Work</a></li>
-          <li><a href="/hammerhead/">Hammerhead</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/security/">Security</a></li>
-          <li><a href="https://github.com/talarurus" rel="noopener">GitHub <svg class="icon icon-sm icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
-        </ul>
-        <a class="button button-primary button-sm nav-cta" href="/contact/">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main" tabindex="-1">
-    <section class="page-hero" aria-labelledby="page-title">
-      <div class="container">
-        <p class="eyebrow">Work</p>
-        <h1 id="page-title">Software from Talarurus</h1>
-        <p class="lead">What has been released, and the areas Talarurus is building in. Projects are listed here once they are publicly released.</p>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Work | Talarurus</title>
+    <meta name="description" content="Explore Hammerhead v0.1.0 and Talarurus’s in-development finance dashboard and games.">
+    <link rel="canonical" href="https://talarurus.com/work/">
+    <meta name="theme-color" content="#f7f5f0">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Talarurus">
+    <meta property="og:title" content="Work | Talarurus">
+    <meta property="og:description" content="Explore Hammerhead v0.1.0 and Talarurus’s in-development finance dashboard and games.">
+    <meta property="og:url" content="https://talarurus.com/work/">
+    <meta property="og:image" content="https://talarurus.com/assets/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Talarurus: Security, developer, and local-first software.">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="preload" href="/assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/site.js" defer></script>
+  </head>
+  <body class="page-work">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="header">
+      <div class="wrap header-inner"><a class="brand" href="/" aria-label="Talarurus home"><img src="/assets/talarurus-logo.svg" width="116" height="28" alt="Talarurus"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+        <nav id="navigation" aria-label="Main navigation"><a href="/work/" aria-current="page">Work</a><a href="/hammerhead/">Hammerhead</a><a href="/about/">About</a><a class="nav-contact" href="/contact/">Contact <span aria-hidden="true">↗</span></a></nav>
       </div>
-    </section>
-
-    <section class="section" aria-labelledby="released-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="released-title">Released</h2>
-        </div>
-        <article class="work-item" aria-labelledby="hh-title">
-          <div>
-            <div class="product-title">
-              <h3 id="hh-title">Hammerhead</h3>
-              <span class="status">Released v0.1.0</span>
-            </div>
-            <p>Defensive security tooling for auditing potentially untrusted software repositories. Hammerhead is a local-first command-line tool written in Go. Hammerhead is built around a security-focused SafeWalker architecture, and it reports Security, Hygiene, and Info findings in the terminal or as JSON.</p>
-            <ul class="tag-list" aria-label="Characteristics">
-              <li>Security tooling</li>
-              <li>Go</li>
-              <li>CLI</li>
-              <li>Local-first</li>
-              <li>Terminal and JSON reports</li>
-            </ul>
-          </div>
-          <div class="actions">
-            <a class="button button-primary" href="/hammerhead/">Product overview <svg class="icon icon-sm icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-sunk" aria-labelledby="areas-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="areas-title">Areas of work</h2>
-          <p class="lead">These are the areas Talarurus works in. They describe direction, not shipped product lines.</p>
-        </div>
-        <ul class="area-rows">
-          <li>
-            <h3>Security tooling</h3>
-            <p>Defensive tools for examining software before it is trusted.</p>
-            <span class="status">Hammerhead released</span>
-          </li>
-          <li>
-            <h3>Developer tooling</h3>
-            <p>Focused tools for the day-to-day work of building and maintaining software.</p>
-            <span class="status status-neutral">No public release yet</span>
-          </li>
-          <li>
-            <h3>Local-first software / AI</h3>
-            <p>Software, including AI, that runs on hardware you control and keeps your data there.</p>
-            <span class="status status-neutral">No public release yet</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="cta-title">
-      <div class="container">
-        <div class="cta">
-          <div>
-            <h2 id="cta-title">Stay up to date.</h2>
-            <p>Follow Talarurus on GitHub for updates.</p>
-          </div>
-          <div class="actions">
-            <a class="button button-primary" href="https://github.com/talarurus" rel="noopener">GitHub <svg class="icon icon-sm icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-            <a class="button" href="/contact/">Contact</a>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="work-hero wrap">
+        <p class="kicker">WORK</p>
+        <h1>Software with<br>  <span>a clear purpose.</span></h1>
+        <p class="hero-lead">Hammerhead v0.1.0 is released. A personal finance dashboard and game projects are in development.<br>  Released software and work in progress, clearly marked.</p>
+      </section>
+      <section class="work-index wrap">
+        <aside class="work-side">
+          <p class="kicker">PROJECTS</p>
+          <a href="#hammerhead">Released <span aria-hidden="true">→</span></a><a href="#finance">In development <span aria-hidden="true">→</span></a></aside>
+        <div class="work-main">
+          <article class="work-feature" id="hammerhead">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">01 / SECURITY TOOLING</p>
+                <h2>Hammerhead</h2>
+              </div>
+              <span class="badge ">v0.1.0 released</span></div>
+            <p class="work-description">Audit potentially untrusted software repositories on your own machine. A local-first Go CLI with Terminal and JSON reports.</p>
+            <figure class="report compact" >
+              <div class="report-top"><span class="report-name"><span aria-hidden="true">›_</span> HAMMERHEAD</span><span>v0.1.0</span></div>
+              <div class="report-toolbar">
+                <div class="report-tabs" role="tablist" aria-label="Report format"><button id="work-a-terminal-tab" role="tab" aria-selected="true" aria-controls="work-a-terminal">Terminal</button><button id="work-a-json-tab" role="tab" aria-selected="false" aria-controls="work-a-json" tabindex="-1">JSON</button></div>
+                <button class="copy-command" data-copy="hammerhead audit ./demo-repository --quiet" hidden>Copy command</button></div>
+              <div id="work-a-terminal" role="tabpanel" aria-labelledby="work-a-terminal-tab" tabindex="0">
+                <p class="command"><span aria-hidden="true">$ </span>hammerhead audit ./demo-repository --quiet</p>
+                <pre class="output"><span class="high">[HIGH] [FILE-001] certs/demo.key Private key file</span>
+<span class="high">[HIGH] [SEC-001] certs/demo.key:1 Cryptographic private key in file content</span>
+<span class="low">[LOW] [PROJ-001] LICENSE Missing project LICENSE</span>
+<span class="info">[INFO] [PROJ-002] go.mod Project runtime: Go</span></pre>
+                <div class="report-result"><span class="high">Exit status 1</span><span>Security threshold reached</span></div>
+              </div>
+              <div id="work-a-json" role="tabpanel" aria-labelledby="work-a-json-tab" tabindex="0" hidden>
+                <p class="command"><span aria-hidden="true">$ </span>hammerhead audit ./demo-repository --output json</p>
+                <pre class="output json-output">{
+  &quot;schema&quot;: &quot;hammerhead/v0.1&quot;,
+  &quot;version&quot;: &quot;0.1.0&quot;,
+  &quot;summary&quot;: {
+    &quot;total_findings&quot;: 4,
+    &quot;checks_run&quot;: 7,
+    &quot;security_risk&quot;: &quot;high&quot;,
+    &quot;max_severity&quot;: &quot;high&quot;,
+    &quot;security_findings_count&quot;: 2,
+    &quot;hygiene_findings_count&quot;: 1,
+    &quot;info_findings_count&quot;: 1,
+    &quot;by_severity&quot;: {
+      &quot;high&quot;: 2,
+      &quot;info&quot;: 1,
+      &quot;low&quot;: 1
+    },
+    &quot;by_class&quot;: {
+      &quot;hygiene&quot;: 1,
+      &quot;info&quot;: 1,
+      &quot;security&quot;: 2
+    }
+  }
+}</pre>
+                <div class="report-result"><span class="high">Exit status 1</span><span>JSON summary excerpt</span></div>
+              </div>
+              <figcaption>Actual v0.1.0 output on a synthetic repository. No usable credentials.</figcaption>
+            </figure>
+            <div class="feature-bottom"><span>Go · CLI · Local-first</span><a class="text-link" href="/hammerhead/">View product <span aria-hidden="true">→</span></a></div>
+          </article>
+          <div class="project-rows">
+            <article class="project-row" id="finance"><span class="project-number" aria-hidden="true">01</span>
+              <div>
+                <p class="kicker">Personal finance</p>
+                <h3>Personal finance dashboard</h3>
+                <p>A personal finance dashboard is in development. Details will be shared as the project takes shape.</p>
+              </div>
+              <span class="badge pending">In development</span></article>
+            <article class="project-row" id="games"><span class="project-number" aria-hidden="true">02</span>
+              <div>
+                <p class="kicker">Game development</p>
+                <h3>Games</h3>
+                <p>Game projects are also in development at Talarurus. The studio will share details when the projects are ready.</p>
+              </div>
+              <span class="badge pending">In development</span></article>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a class="brand" href="/">
-            <img src="/assets/logo.svg" alt="" width="32" height="32">
-            <span>Talarurus</span>
-          </a>
-          <p>Security, developer, and local-first software.</p>
-          <a class="footer-email" href="mailto:ammaar@talarurus.com">ammaar@talarurus.com</a>
+      </section>
+      <section class="work-note wrap">
+        <h2>Follow the work.</h2>
+        <p>Talarurus will share details about work in development when it is ready.</p>
+        <a class="text-link" href="https://github.com/talarurus">Talarurus on GitHub <span aria-hidden="true">↗</span></a></section>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-main">
+          <div class="footer-identity"><a class="brand" href="/"><img src="/assets/talarurus-logo.svg" width="116" height="28" alt="Talarurus"></a>
+            <p>Independent software studio.<br> Security, developer, and local-first software.</p>
+            <a class="text-link" href="mailto:ammaar@talarurus.com">ammaar@talarurus.com <span aria-hidden="true">↗</span></a></div>
+          <nav class="footer-links" aria-label="Footer">
+            <div>
+              <h3>Studio</h3>
+              <a href="/work/">Work</a><a href="/about/">About</a><a href="/contact/">Contact</a></div>
+            <div>
+              <h3>Software</h3>
+              <a href="/hammerhead/">Hammerhead</a><a href="/hammerhead/docs/">Documentation</a><a href="https://github.com/talarurus">GitHub ↗</a></div>
+            <div>
+              <h3>Trust</h3>
+              <a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+          </nav>
         </div>
-        <nav class="footer-nav" aria-label="Footer">
-          <div>
-            <h2>Products</h2>
-            <ul>
-              <li><a href="/hammerhead/">Hammerhead</a></li>
-              <li><a href="/work/">All work</a></li>
-            </ul>
-          </div>
-          <div>
-            <h2>Company</h2>
-            <ul>
-              <li><a href="/about/">About</a></li>
-              <li><a href="/contact/">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h2>Security</h2>
-            <ul>
-              <li><a href="/security/">Security</a></li>
-              <li><a href="/security/#reporting">Responsible disclosure</a></li>
-              <li><a href="/.well-known/security.txt">security.txt</a></li>
-            </ul>
-          </div>
-          <div>
-            <h2>Resources</h2>
-            <ul>
-              <li><a href="https://github.com/talarurus" rel="noopener">GitHub</a></li>
-            </ul>
-          </div>
-          <div>
-            <h2>Legal</h2>
-            <ul>
-              <li><a href="/privacy/">Privacy</a></li>
-              <li><a href="/terms/">Terms</a></li>
-            </ul>
-          </div>
-        </nav>
+        <div class="footer-bottom"><span>© 2026 Talarurus</span>
+          <div><a href="/.well-known/security.txt">security.txt</a></div>
+        </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Talarurus</p>
-        <p>talarurus.com</p>
-      </div>
-    </div>
-  </footer>
-</body>
+    </footer>
+    <p class="sr-only" role="status" id="copy-status"></p>
+  </body>
 </html>

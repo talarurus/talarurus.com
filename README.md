@@ -1,96 +1,97 @@
 # talarurus.com
 
-The official website for Talarurus, served at <https://talarurus.com>.
-
-Talarurus is an independent software organization building security, developer,
-and local-first software. This repository holds the public website: plain static
-HTML and CSS with one small optional script. There is no framework, no build
-step, no analytics, no cookies, and no third-party requests.
+The public website for Talarurus, an independent software studio building
+security, developer, and local-first software.
 
 ## Local preview
 
-Serve the repository root with any static file server, so that root-relative
-paths (`/css/...`, `/assets/...`) and clean URLs (`/hammerhead/`) resolve:
+Serve this directory with a static server so root-relative assets and clean URLs
+resolve correctly:
 
 ```sh
 python3 -m http.server 8000
-# then open http://localhost:8000
 ```
 
-Opening the HTML files directly from disk will not load styles or fonts.
+Open http://localhost:8000. Cloudflare applies the security response headers in
+`_headers` in production; Python's basic server does not emulate those headers.
 
-## Project structure
+## Website structure
 
-```
-index.html                 Home
-work/index.html            Work: released projects and areas of work
-hammerhead/index.html      Hammerhead product page
-about/index.html           About Talarurus
-contact/index.html         Contact (email and GitHub; no form)
-security/index.html        Security and responsible disclosure
-privacy/index.html         Privacy Policy
-terms/index.html           Terms of Use
-404.html                   Not-found page
+- `/`: studio homepage, featured Hammerhead release, and work in development.
+- `/work/`: released and in-development projects.
+- `/hammerhead/`: product overview and actual v0.1.0 CLI demonstrations.
+- `/hammerhead/docs/`: commands, reports, security model, and limitations.
+- `/hammerhead/release/`: verified release information and availability.
+- `/about/`: studio background and founder identity.
+- `/contact/`: company email, security reporting, and GitHub links.
+- `/security/`, `/privacy/`, `/terms/`: disclosure guidance and legal information.
+- `404.html`: unknown-path response.
 
-css/styles.css             All styles; design tokens are defined in :root
-js/site.js                 Mobile menu and "copy address" button (optional;
-                           every page works without JavaScript)
+Every page is standalone HTML. The header and footer appear in all eleven HTML
+files; update them consistently and mark the active navigation link with
+`aria-current="page"`. Keep `sitemap.xml` in sync with public routes.
 
-assets/logo.svg            Temporary logo: header, footer, and SVG favicon
-assets/apple-touch-icon.png
-assets/og.png              Open Graph / social preview image (1200x630)
-assets/fonts/              Self-hosted Inter (SIL Open Font License, see OFL.txt)
-favicon.ico                32x32 fallback favicon
+## Styling and progressive enhancement
 
-.well-known/security.txt   RFC 9116 security contact
-robots.txt
-sitemap.xml
-_headers                   Cloudflare response headers (CSP and security headers)
-```
+`css/styles.css` defines the Precision layout, responsive rules, warm neutral
+palette, and shared controls. Inter is self-hosted under the SIL Open Font License
+in `assets/fonts/OFL.txt`. The official logo and favicon exports in `assets/` are
+canonical, monochrome brand assets; do not redraw or recolor them.
 
-### Editing pages
+`js/site.js` enhances mobile navigation, accessible Terminal/JSON report tabs,
+and clipboard controls. Links and essential content remain usable without
+JavaScript. Product demonstrations preserve actual Hammerhead v0.1.0 output on a
+synthetic fixture with no usable credentials. The JSON panel is a summary excerpt.
 
-Each page is standalone HTML. The header and footer are repeated in every page,
-so a change to navigation or footer links must be made in all nine HTML files.
-Mark the current page's navigation link with `aria-current="page"`.
+`js/landscape.js` draws the existing deterministic ASCII valley in the hero,
+caching geometry on resize and animating cached layers at up to 20 fps with a
+capped backing-store scale. Text ranges receive quieter scenery. Animation stops
+offscreen, in hidden tabs, when paused, and for reduced motion. Pre-rendered HTML
+frames provide a non-JavaScript and script-failure fallback.
 
-When adding a page, also add it to `sitemap.xml`.
+`js/atmosphere.js` mounts ascii.rest's actual Saptarishi scene in the studio section
+at 12 fps. The upstream player pauses offscreen, in hidden tabs, and for reduced
+motion. A pause control and static frame are supplied. Dependencies are pinned to
+ascii.rest 0.3.0, commit `7f86daf5dfed61a1e4f72fb40b734bc604fa35ff`, and self-hosted
+in `assets/vendor/ascii-rest/0.3.0/` with the full MIT license and provenance.
 
-### Replacing the logo
+No framework, build step, analytics, cookies, remote fonts, or third-party runtime
+scripts are required. Preserve the existing Content Security Policy in `_headers`.
 
-The dinosaur mark is temporary. To replace it:
+## Production deployment
 
-1. Replace `assets/logo.svg` (square). The header, footer, and SVG favicon update.
-2. Regenerate `favicon.ico`, `assets/apple-touch-icon.png` (180x180), and
-   `assets/og.png` (1200x630), which are rendered from the current logo.
-3. If the new mark is not pixel art, remove `image-rendering: pixelated` from
-   `.brand img` in `css/styles.css`.
+The existing Cloudflare Pages project is `talarurus-com`, connected to the
+`talarurus/talarurus.com` GitHub repository. Production uses the `main` branch and
+serves the static repository root at https://talarurus.com. The GitHub integration
+publishes production updates after a push to `main`; a separate Wrangler deploy
+command is not required. Do not create another Pages project or change DNS.
 
-## Deployment
+Keep the production branch limited to reviewed website files, required assets,
+licenses, and this public README. Do not merge development branches wholesale if
+they contain internal brand sources, design-review notes, agent instructions,
+credentials, backups, or temporary files. `.assetsignore` is a Workers feature and
+must not be relied on to exclude files from a Pages root deployment.
 
-The site is intended to be deployed on Cloudflare (Pages, or Workers static
-assets) as a static site:
+Before pushing, inspect the entire staged diff and tracked-file list, verify
+local routes and references, and check that the approved logos and security
+headers are unchanged. After Cloudflare's deployment succeeds, verify the actual
+custom domain, all routes and assets, CSP, interactions, reduced motion, and
+unknown-path handling. Confirm that internal paths such as `/brand/` and `/docs/`
+return 404. Preserve Cloudflare Web Analytics and script injection as disabled,
+consistent with the Privacy Policy and CSP.
 
-- Build command: none
-- Output directory: repository root (`/`)
-- Custom domain: `talarurus.com`
+## Hammerhead distribution follow-up
 
-Cloudflare applies `_headers` automatically and serves `404.html` for unknown
-paths on Pages. On Workers static assets, set `not_found_handling = "404-page"`.
+No verified public repository or download URL is currently available. Product
+pages use a non-clickable availability status and working local documentation.
+The owner must provide a verified, anonymously accessible destination before a
+download link is added. Do not publish Hammerhead source or release binaries as
+part of a website deployment.
 
-After deploying, confirm that `https://talarurus.com/.well-known/security.txt`
-is served, and keep Cloudflare Web Analytics and other script injection
-disabled: the Content-Security-Policy only allows same-origin resources, and
-the Privacy Policy states that the site runs no analytics.
+## Maintenance and content
 
-### Maintenance
-
-- `.well-known/security.txt` has an `Expires` date (currently 2027-10-01).
-  Renew it before then.
-- Update the "Last updated" date on the Privacy Policy or Terms of Use whenever
-  either changes.
-
-## Content policy
-
-Everything on the site must be factual. Do not add products, features,
-metrics, customers, partners, or claims that do not exist.
+`.well-known/security.txt` expires on 2027-10-01 and must be renewed before then.
+Update legal policy dates when their substance changes. Keep product descriptions
+factual and distinguish releases from work in development. Do not add unverified
+customers, metrics, partnerships, funding, or capabilities. Company copy uses a
+third-person voice without em dashes.

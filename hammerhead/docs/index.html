@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hammerhead documentation | Talarurus</title>
+    <meta name="description" content="Hammerhead v0.1.0 commands, reporting, and release information from Talarurus.">
+    <link rel="canonical" href="https://talarurus.com/hammerhead/docs/">
+    <meta name="theme-color" content="#f7f5f0">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Talarurus">
+    <meta property="og:title" content="Hammerhead documentation | Talarurus">
+    <meta property="og:description" content="Hammerhead v0.1.0 commands, reporting, and release information from Talarurus.">
+    <meta property="og:url" content="https://talarurus.com/hammerhead/docs/">
+    <meta property="og:image" content="https://talarurus.com/assets/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Talarurus: Security, developer, and local-first software.">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="preload" href="/assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/site.js" defer></script>
+  </head>
+  <body class="page-hammerhead/docs">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="header">
+      <div class="wrap header-inner"><a class="brand" href="/" aria-label="Talarurus home"><img src="/assets/talarurus-logo.svg" width="116" height="28" alt="Talarurus"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+        <nav id="navigation" aria-label="Main navigation"><a href="/work/">Work</a><a href="/hammerhead/">Hammerhead</a><a href="/about/">About</a><a class="nav-contact" href="/contact/">Contact <span aria-hidden="true">↗</span></a></nav>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <div class="auxiliary">
+        <section class="page-hero">
+          <div class="wrap">
+            <p class="kicker">HAMMERHEAD / V0.1.0 DOCUMENTATION</p>
+            <h1>Start with a local audit.</h1>
+            <p class="lead">Commands, reporting, and boundaries for the v0.1.0 CLI.</p>
+          </div>
+        </section>
+        <section class="aux-section">
+          <div class="wrap doc">
+            <nav class="toc" aria-label="On this page">
+              <h2>On this page</h2>
+              <ol>
+                <li><a href="#quick-start">Quick start</a></li>
+                <li><a href="#reports">Reports and exits</a></li>
+                <li><a href="#security-model">Security model</a></li>
+                <li><a href="#limits">Limitations</a></li>
+              </ol>
+            </nav>
+            <div class="prose">
+              <h2 id="quick-start">Quick start</h2>
+              <p>With the v0.1.0 executable on your PATH, verify the installed version:</p>
+              <div class="command-list">
+                <article><code>hammerhead version</code></article>
+              </div>
+              <p>Audit the current working tree:</p>
+              <div class="command-list">
+                <article><code>hammerhead audit .</code></article>
+              </div>
+              <p>Write structured JSON:</p>
+              <div class="command-list">
+                <article><code>hammerhead audit . --output json &gt; audit.json</code></article>
+              </div>
+              <p>Use <code>--quiet</code> for compact finding lines. Quiet mode omits the summary.</p>
+              <h2 id="reports">Reports and exit status</h2>
+              <p>The default failure threshold is high. Security findings alone affect finding-based failure; Hygiene and Info do not.</p>
+              <ul>
+                <li>0: No Security finding reached the selected threshold.</li>
+                <li>1: At least one Security finding reached the selected threshold.</li>
+                <li>2: CLI or operational failure, such as an invalid target or flag.</li>
+              </ul>
+              <p>Check errors can be recorded while other checks continue. They do not automatically force status 2. A successful threshold result is not a guarantee of safety or complete coverage.</p>
+              <p>JSON uses schema <code>hammerhead/v0.1</code>. Reports include version, repository metadata, summary, findings, and reported check errors.</p>
+              <h2 id="security-model">Security model</h2>
+              <p>Hammerhead inspects the target working tree without running its build scripts, package managers, hooks, or binaries. SafeWalker uses guarded file reads and symlink containment checks relative to the target root.</p>
+              <p>Default traversal limits are depth 50 and 100,000 discovered entries. Content reads are bounded at 10 MiB. Common generated/dependency directories and .git are excluded. These are defense-in-depth measures, not a sandbox.</p>
+              <h2 id="limits">Limitations</h2>
+              <ul>
+                <li>Scans the current working tree, not Git history.</li>
+                <li>Matches supported credential patterns; does not validate active credentials.</li>
+                <li>No CVE/dependency database scanning or semantic SAST analysis.</li>
+                <li>Does not unpack archives. Binary and oversized content is outside normal secret-content inspection.</li>
+                <li>Exclusions, unreadable files, partial traversal, and check failures can limit coverage.</li>
+              </ul>
+              <h2>Command help</h2>
+              <pre class="help-output">Audit inspects the target directory for security risks including
+sensitive files, credential exposure, and repository hygiene issues.
+
+By default, the exit code is non-zero if any HIGH or CRITICAL findings
+are detected. Use --fail-on to change this threshold.
+
+Usage:
+  hammerhead audit [path] [flags]
+
+Flags:
+  -e, --exclude stringArray    Exclude paths matching pattern (repeatable)
+      --fail-on string         Minimum severity for non-zero exit: critical, high, medium, low, info, none (default "high")
+  -h, --help                   help for audit
+      --max-file-size string   Override large file threshold for FILE-002 (e.g. 50MB, 10MB)
+  -o, --output string          Output format: terminal, json (default "terminal")
+  -q, --quiet                  Quiet mode: print compact findings without decorative banners
+</pre>
+              <p><a href="/security/">Report vulnerabilities privately</a>.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-main">
+          <div class="footer-identity"><a class="brand" href="/"><img src="/assets/talarurus-logo.svg" width="116" height="28" alt="Talarurus"></a>
+            <p>Independent software studio.<br>Security, developer, and local-first software.</p>
+            <a class="text-link" href="mailto:ammaar@talarurus.com">ammaar@talarurus.com <span aria-hidden="true">↗</span></a></div>
+          <nav class="footer-links" aria-label="Footer">
+            <div>
+              <h3>Studio</h3>
+              <a href="/work/">Work</a><a href="/about/">About</a><a href="/contact/">Contact</a></div>
+            <div>
+              <h3>Software</h3>
+              <a href="/hammerhead/">Hammerhead</a><a href="/hammerhead/docs/">Documentation</a><a href="https://github.com/talarurus">GitHub ↗</a></div>
+            <div>
+              <h3>Trust</h3>
+              <a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+          </nav>
+        </div>
+        <div class="footer-bottom"><span>© 2026 Talarurus</span>
+          <div><a href="/.well-known/security.txt">security.txt</a></div>
+        </div>
+      </div>
+    </footer>
+    <p class="sr-only" role="status" id="copy-status"></p>
+  </body>
+</html>
