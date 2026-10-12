@@ -22,12 +22,14 @@ Open http://localhost:8000. Cloudflare applies the security response headers in
 - `/hammerhead/`: product overview and actual v0.1.0 CLI demonstrations.
 - `/hammerhead/docs/`: commands, reports, security model, and limitations.
 - `/hammerhead/release/`: verified release information and availability.
+- `/products/plainbalance/`: plainbalance v0.3.1 Developer Preview, features, platform
+  status, security limitations, planned releases, and public GitHub source.
 - `/about/`: studio background and founder identity.
 - `/contact/`: company email, security reporting, and GitHub links.
 - `/security/`, `/privacy/`, `/terms/`: disclosure guidance and legal information.
 - `404.html`: unknown-path response.
 
-Every page is standalone HTML. The header and footer appear in all eleven HTML
+Every page is standalone HTML. The header and footer appear in all twelve HTML
 files; update them consistently and mark the active navigation link with
 `aria-current="page"`. Keep `sitemap.xml` in sync with public routes.
 
@@ -100,3 +102,87 @@ Update legal policy dates when their substance changes. Keep product description
 factual and distinguish releases from work in development. Do not add unverified
 customers, metrics, partnerships, funding, or capabilities. Company copy uses a
 third-person voice without em dashes.
+
+## plainbalance review
+
+From the website root, start the dedicated local preview:
+
+```sh
+python3 -m http.server 4182 --bind 127.0.0.1
+```
+
+Open http://127.0.0.1:4182/products/plainbalance/. Ctrl-C stops the server.
+The product is also linked from the homepage, Work, and every Software footer.
+Its styles in `css/plainbalance.css` are scoped to the product page and reuse the
+shared website tokens and controls.
+`js/plainbalance-navigation.js` prevents the shared mobile menu initialization
+from shifting this page. Navigation remains visible without JavaScript, and
+the temporary state clears if the shared script fails to load.
+
+The public source is https://github.com/talarurus/plainbalance. v0.3.1 is experimental
+development software for fictional records; local databases and backups are
+unencrypted. There is no verified consumer installer. Keep platform support
+and future milestones aligned with the repository's evidence and roadmap.
+
+The local screenshot gallery contains four unedited v0.3.1 browser captures:
+Overview (light), Spending (dark), Cash flow (light) and Accounts (light). They
+show the working shared frontend connected to a Rust storage test harness with
+the canonical synthetic ledger. Each caption identifies browser UI, synthetic
+data and theme. They do not establish native desktop or mobile app support.
+The 38 available captures were reviewed; empty states, modal/layout checks and
+less suitable views are omitted from the showcase. Transactions can be
+recaptured after improving its crowded merchant/classification text.
+
+Assets live in `assets/products/plainbalance/`, with original PNGs under
+`v0.3.1/`, the unchanged outlined product lockup, MPL license and provenance.
+The four images total 515,938 bytes and use intrinsic dimensions. Overview is
+eager-loaded beside the hero; supporting captures are lazy-loaded in matching
+frames with contain sizing (no cropping). Images have aligned captions
+and link to their uncropped full-size originals. Founder approval of these
+specific images and page layout is required before deployment. Future native
+captures should follow the repository's `docs/screenshots/README.md` guidance,
+use fictional records, retain the full application window and remove personal
+desktop details. Never label browser captures as certified native screenshots.
+
+Founder visual approval is required before publishing this website integration.
+
+
+## plainbalance local rename
+
+The product route is now `/products/plainbalance/`; `_redirects` prepares both former Odaraia URL spellings for a permanent redirect on the existing host. The redirects are not live until an approved deployment. Python's basic server does not apply `_redirects`; test them on a redirect-aware local preview or the approved Pages deployment. The site keeps its official Talarurus logo/favicon and publisher identity unchanged. The product header uses the approved font-independent outlined `plainbalance by Talarurus` lockup with accessible alternative text.
+
+GitHub links use `talarurus/plainbalance` and its published `PLAINBALANCE_*.md` document paths. The founder renamed the existing repository in place, and the reviewed source is published with its original history preserved. Do not create a new repo at the old name, which would invalidate GitHub redirects. Review the complete website diff, local route checks and visual layout before any website push: this site's production branch auto-deploys. No website push, deployment, Cloudflare change or media publication is authorized by the source-publication approval.
+
+The screenshot section is prepared locally for founder visual review, with explicit browser/synthetic-data labels, a verified commit-pinned source ZIP and no consumer installer claims. The reviewed GitHub link handoff from the finance workspace has been applied locally after verifying the renamed public repository and published source. Website deployment remains a separate approval. Preserve unrelated editorial work when staging: shared homepage and About files contain separate changes that must not be included without their own review.
+
+
+## plainbalance downloads
+
+As checked on 2026-10-12, the public repository has no GitHub Releases, tags or
+installer assets. The current product version is v0.3.1 Developer Preview, not
+an existing `v0.3.1` release tag. The website links to the verified source ZIP
+for reviewed commit `b6fcd4c94ba4ca75d56dd2a3ecfcf93257d4873a`:
+
+https://github.com/talarurus/plainbalance/archive/b6fcd4c94ba4ca75d56dd2a3ecfcf93257d4873a.zip
+
+The archive was downloaded and validated as a ZIP containing the source,
+license, changelog and security notices (873,279 bytes). Source archives require
+a development environment and are not installers. The changelog and preview
+notes contain historical preparation language; there are no GitHub Release
+notes yet. The page distinguishes component/build checks from installed desktop
+support and uses availability text rather than inactive download buttons.
+
+For future approved releases, use versioned GitHub tags and GitHub Releases as
+the canonical distribution location. Each release must identify its source
+commit, contain release notes, a `SHA256SUMS` manifest and only verified platform
+assets (for example a signed/notarized macOS DMG, a signed Windows installer and
+verified Linux packages). Publish checksums alongside the exact release files;
+verify downloaded bytes, architecture, signing and platform acceptance before
+linking those specific assets from the website. Keep older version links and
+release notes available. Do not duplicate hosted binaries in this website or
+use a moving `latest` URL as a verified version. Add links to the existing
+platform rows only when the corresponding assets and checksums exist and
+founder publication approval is given. Consumer installers remain withheld
+while financial databases and backups are unencrypted; encryption, protected
+backup/recovery and release security gates must pass first. Other platforms
+require their own verified runtime and distribution evidence.

@@ -1,0 +1,176 @@
+/* Product layout only. Shared type, colours and controls stay in styles.css. */
+.page-plainbalance .plainbalance-hero { padding-block: 28px 56px; }
+.page-plainbalance .plainbalance-hero .breadcrumb { margin-bottom: 20px; }
+.page-plainbalance .plainbalance-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(32px, 4vw, 56px);
+  align-items: center;
+}
+.page-plainbalance .plainbalance-lockup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.page-plainbalance .plainbalance-icon { flex: 0 0 44px; width: 44px; height: 44px; }
+.page-plainbalance .plainbalance-wordmark { width: 200px; height: auto; }
+.page-plainbalance .plainbalance-hero h1 {
+  font-size: clamp(44px, 4.5vw, 64px);
+  line-height: 1.06;
+  letter-spacing: -.055em;
+}
+.page-plainbalance .plainbalance-hero .hero-lead {
+  max-width: 500px;
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 1.65;
+}
+.page-plainbalance .plainbalance-hero .actions { margin-top: 28px; gap: 10px; }
+.page-plainbalance .plainbalance-hero .button { gap: 16px; padding-inline: 18px; }
+.page-plainbalance .plainbalance-stage,
+.page-plainbalance .plainbalance-notice { font-size: 13px; line-height: 1.65; }
+.page-plainbalance .plainbalance-stage { margin-top: 20px; }
+.page-plainbalance .plainbalance-notice { max-width: 420px; margin-top: 10px; }
+.page-plainbalance .plainbalance-stage a,
+.page-plainbalance .plainbalance-notice a,
+.page-plainbalance .plainbalance-source-links a,
+.page-plainbalance .plainbalance-source-meta a { text-decoration: underline; text-underline-offset: 4px; }
+.page-plainbalance .plainbalance-section {
+  padding-block: clamp(48px, 5vw, 72px);
+  border-top: 1px solid var(--line);
+}
+.page-plainbalance .plainbalance-section-heading {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.page-plainbalance .kicker { margin-bottom: 14px; }
+.page-plainbalance h2 { font-size: clamp(32px, 3.3vw, 46px); line-height: 1.12; }
+.page-plainbalance .plainbalance-section-heading > p { max-width: 500px; font-size: 16px; line-height: 1.7; }
+.page-plainbalance .plainbalance-featured,
+.page-plainbalance .plainbalance-media figure { margin: 0; min-width: 0; }
+.page-plainbalance .plainbalance-media-frame {
+  display: block;
+  aspect-ratio: 1 / 1.12;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #eeece6;
+}
+.page-plainbalance .plainbalance-media-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.page-plainbalance .plainbalance-featured figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 14px;
+}
+.page-plainbalance .plainbalance-caption-title { font-size: 16px; font-weight: 550; color: var(--ink); }
+.page-plainbalance .plainbalance-featured figcaption > span:last-child,
+.page-plainbalance .plainbalance-media figcaption > span { font-size: 12px; line-height: 1.65; color: var(--muted); }
+.page-plainbalance .plainbalance-media { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.page-plainbalance .plainbalance-media .plainbalance-media-frame { padding: 10px; }
+.page-plainbalance .plainbalance-media .plainbalance-media-frame img { object-position: center top; }
+.page-plainbalance .plainbalance-media figcaption { margin-top: 20px; }
+.page-plainbalance .plainbalance-media h3 { margin-bottom: 8px; font-size: 22px; }
+.page-plainbalance .plainbalance-media figcaption p { margin-bottom: 10px; font-size: 15px; line-height: 1.65; }
+.page-plainbalance .plainbalance-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.page-plainbalance .plainbalance-features h3 { margin-bottom: 12px; font-size: 22px; }
+.page-plainbalance .plainbalance-features p { font-size: 16px; line-height: 1.75; }
+.page-plainbalance .plainbalance-footnote { max-width: 800px; margin-top: 28px; font-size: 14px; }
+.page-plainbalance .plainbalance-downloads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.page-plainbalance .plainbalance-source-card {
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff60;
+}
+.page-plainbalance .plainbalance-source-card h3 { margin-bottom: 16px; font-size: 26px; }
+.page-plainbalance .plainbalance-source-card > p:not(.kicker) { font-size: 15px; line-height: 1.75; }
+.page-plainbalance .plainbalance-source-card .button { margin-top: 24px; max-width: 100%; }
+.page-plainbalance .plainbalance-source-meta { margin-top: 12px; }
+.page-plainbalance .plainbalance-source-card > .plainbalance-source-meta { font-size: 13px; }
+.page-plainbalance .plainbalance-source-links { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 24px; font-size: 14px; line-height: 1.75; }
+.page-plainbalance .plainbalance-source-detail { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+.page-plainbalance .plainbalance-platform-card { padding: 8px 0; }
+.page-plainbalance .plainbalance-platform-card > h3 { font-size: 22px; }
+.page-plainbalance .plainbalance-platforms { margin: 12px 0 20px; }
+.page-plainbalance .plainbalance-platforms > div {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 20px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.page-plainbalance .plainbalance-platforms dt { font-weight: 550; }
+.page-plainbalance .plainbalance-platforms dd { color: var(--muted); }
+.page-plainbalance .plainbalance-platforms dd span { display: block; margin-top: 4px; font-size: 12px; }
+.page-plainbalance .plainbalance-next {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  margin-top: 32px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.page-plainbalance .plainbalance-next p { max-width: 760px; }
+.page-plainbalance .plainbalance-local { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+.page-plainbalance .plainbalance-security-copy p { margin-bottom: 20px; font-size: 16px; line-height: 1.75; }
+@media (max-width: 1100px) {
+  .page-plainbalance .plainbalance-hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .page-plainbalance .plainbalance-media { gap: 20px; }
+  .page-plainbalance .plainbalance-media figcaption p { min-height: 3.3em; }
+}
+@media (max-width: 900px) {
+  .page-plainbalance .plainbalance-hero-grid,
+  .page-plainbalance .plainbalance-section-heading,
+  .page-plainbalance .plainbalance-downloads,
+  .page-plainbalance .plainbalance-local { grid-template-columns: 1fr; gap: 28px; }
+  .page-plainbalance .plainbalance-hero-copy { max-width: 620px; }
+  .page-plainbalance .plainbalance-featured { width: min(100%, 680px); margin-inline: auto; }
+  .page-plainbalance .plainbalance-hero h1 { font-size: clamp(38px, 9.8vw, 60px); }
+  .page-plainbalance .plainbalance-media,
+  .page-plainbalance .plainbalance-features { grid-template-columns: 1fr; gap: 32px; }
+  .page-plainbalance .plainbalance-media figure {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 28px;
+  }
+  .page-plainbalance .plainbalance-media figcaption { margin-top: 0; }
+  .page-plainbalance .plainbalance-media figcaption p { min-height: 0; }
+  .page-plainbalance .plainbalance-features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .page-plainbalance .plainbalance-hero { padding-block: 16px 40px; }
+  .page-plainbalance .plainbalance-hero .breadcrumb { margin-bottom: 8px; }
+  .page-plainbalance .plainbalance-lockup { gap: 12px; margin-bottom: 16px; }
+  .page-plainbalance .plainbalance-icon { flex-basis: 36px; width: 36px; height: 36px; }
+  .page-plainbalance .plainbalance-hero .hero-lead { margin-top: 18px; font-size: 17px; }
+  .page-plainbalance .plainbalance-hero .actions { margin-top: 22px; }
+  .page-plainbalance .plainbalance-hero-grid { gap: 28px; }
+  .page-plainbalance .plainbalance-media figure,
+  .page-plainbalance .plainbalance-features { display: block; }
+  .page-plainbalance .plainbalance-media figcaption { margin-top: 16px; }
+  .page-plainbalance .plainbalance-features article + article { margin-top: 28px; }
+  .page-plainbalance .plainbalance-media-frame { padding: 8px; }
+  .page-plainbalance .plainbalance-source-card { padding: 24px; }
+  .page-plainbalance .plainbalance-source-card h3 { font-size: 24px; }
+  .page-plainbalance .plainbalance-platforms > div { grid-template-columns: 72px minmax(0, 1fr); gap: 16px; }
+}
+@media (max-width: 680px) {
+  .plainbalance-enhancing .page-plainbalance .header nav { display: none; }
+}

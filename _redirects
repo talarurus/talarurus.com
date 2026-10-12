@@ -1,0 +1,4 @@
+
+# Product rename; prepared locally, active only after an approved site deployment.
+/products/odaraia /products/plainbalance/ 301
+/products/odaraia/ /products/plainbalance/ 301
