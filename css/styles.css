@@ -2682,3 +2682,30 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .auxiliary .kicker {
   font-size: 11px;
 }
+
+/* Approved Editorial Branding V2. Display complete exports without filters or cropping. */
+.editorial-art {
+  background: #E7E7E7;
+}
+.editorial-art picture {
+  display: block;
+}
+.editorial-art img {
+  width: 100%;
+  height: auto;
+}
+.editorial-art--hero {
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+.editorial-art--about {
+  max-width: 480px;
+  margin-block: 24px;
+  background: #C44945;
+}
+.editorial-art figcaption {
+  padding-block: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+  background: var(--paper);
+}
