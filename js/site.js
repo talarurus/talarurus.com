@@ -10,7 +10,7 @@
  matchMedia('(min-width:681px)').addEventListener('change',close);
  document.querySelectorAll('.report').forEach(report=>{
   const tabs=[...report.querySelectorAll('[role=tab]')];
-  function select(tab){report.querySelector('[data-copy]').dataset.copy=tab.textContent==='JSON'?'hammerhead audit ./demo-repository --output json':'hammerhead audit ./demo-repository --quiet';for(const t of tabs){const chosen=t===tab;t.setAttribute('aria-selected',String(chosen));t.tabIndex=chosen?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!chosen}}
+  function select(tab){const panel=document.getElementById(tab.getAttribute('aria-controls'));const copy=report.querySelector('[data-copy]');const command=panel.querySelector('.command');if(copy&&command)copy.dataset.copy=command.textContent.replace(/^\s*\$\s*/, '').trim();for(const t of tabs){const chosen=t===tab;t.setAttribute('aria-selected',String(chosen));t.tabIndex=chosen?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!chosen}}
   tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>select(tab));tab.addEventListener('keydown',e=>{let index;if(e.key==='ArrowRight')index=(i+1)%tabs.length;else if(e.key==='ArrowLeft')index=(i-1+tabs.length)%tabs.length;else if(e.key==='Home')index=0;else if(e.key==='End')index=tabs.length-1;else return;e.preventDefault();select(tabs[index]);tabs[index].focus()})});
  });
  if(navigator.clipboard&&isSecureContext)document.querySelectorAll('[data-copy]').forEach(b=>{

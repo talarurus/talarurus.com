@@ -1,0 +1,212 @@
+{
+  "schema": "hammerhead/v0.2",
+  "status": "completed",
+  "threshold": {
+    "fail_on": "high",
+    "exceeded": true
+  },
+  "repository": {
+    "root": "<fixture-root>/demo-repository"
+  },
+  "version": "0.2.0-dev",
+  "timestamp": "2026-10-15T00:08:36Z",
+  "summary": {
+    "findings_count": 4,
+    "class_counts": {
+      "hygiene": 1,
+      "info": 1,
+      "security": 2
+    },
+    "highest_security_severity": "high",
+    "checks_attempted": 7
+  },
+  "findings": [
+    {
+      "id": "FILE-001-1d0522bd",
+      "rule_id": "FILE-001",
+      "class": "security",
+      "category": "files",
+      "severity": "high",
+      "confidence": "medium",
+      "title": "Potential private key file",
+      "description": "The filename has a .key extension, which may indicate a private key or unrelated data. This is a filename-only match; contents were not inspected.",
+      "remediation": "Review the actual contents. If sensitive information is present, keep it outside version control and add an appropriate ignore pattern. Determine whether exposure occurred before deciding on credential rotation or other recovery steps.",
+      "path": "certs/demo.key",
+      "evidence": "demo.key",
+      "source": "hammerhead",
+      "check_ver": "0.2.0"
+    },
+    {
+      "id": "SEC-001-1e9f2601",
+      "rule_id": "SEC-001",
+      "class": "security",
+      "category": "secrets",
+      "severity": "high",
+      "confidence": "high",
+      "title": "Supported private-key header detected",
+      "description": "A supported private-key header (-----BEGIN PRIVATE KEY-----) was detected in file content. The header alone does not establish that the file contains a valid or usable private key. Tracking, exposure, and compromise were not established.",
+      "remediation": "Review the contents to determine whether this is a real private key. If so, keep it outside shared source files and determine whether exposure occurred. If exposure is confirmed, replace the affected key and review its use.",
+      "path": "certs/demo.key",
+      "line": 1,
+      "evidence": "-----BEGIN PRIVATE KEY----- [KEY DATA REDACTED]",
+      "source": "hammerhead",
+      "check_ver": "0.2.0"
+    },
+    {
+      "id": "PROJ-001-a975490c",
+      "rule_id": "PROJ-001",
+      "class": "hygiene",
+      "category": "project",
+      "severity": "low",
+      "confidence": "high",
+      "title": "Missing project LICENSE",
+      "description": "No recognized license filename was found at the audited root. License terms may be provided elsewhere. This check does not evaluate license contents, adequacy, or legal suitability, even when a recognized filename is present.",
+      "remediation": "Review where the project's license terms are documented and whether they are appropriate for its intended use. If needed, add a root license file with reviewed terms; a filename alone does not establish licensing rights.",
+      "path": "LICENSE",
+      "evidence": "File not found in root directory",
+      "source": "hammerhead",
+      "check_ver": "0.2.0"
+    },
+    {
+      "id": "PROJ-002-bd77703b",
+      "rule_id": "PROJ-002",
+      "class": "info",
+      "category": "project",
+      "severity": "info",
+      "confidence": "high",
+      "title": "Project runtime: Go",
+      "description": "Identified Go project ecosystem from manifest file 'go.mod'.",
+      "remediation": "Informational: project context identified for scanner workflows.",
+      "path": "go.mod",
+      "evidence": "go.mod",
+      "source": "hammerhead",
+      "check_ver": "0.1.0"
+    }
+  ],
+  "coverage": {
+    "policy": {
+      "exclusions": [
+        ".cache",
+        ".git",
+        ".mypy_cache",
+        ".next",
+        ".nuxt",
+        ".pytest_cache",
+        ".terraform",
+        ".tox",
+        ".venv",
+        "__pycache__",
+        "build",
+        "dist",
+        "node_modules",
+        "vendor",
+        "venv"
+      ],
+      "effective_limits": {
+        "directory_batch_entries": 256,
+        "git_command_timeout_ms": 10000,
+        "git_termination_grace_ms": 1000,
+        "git_wait_cleanup_ms": 1000,
+        "max_aggregate_native_read_bytes": 268435456,
+        "max_depth": 50,
+        "max_description_bytes": 8192,
+        "max_diagnostic_path_bytes": 16384,
+        "max_diagnostic_samples": 200,
+        "max_evidence_bytes": 2048,
+        "max_examined_entries": 100000,
+        "max_examples_per_reason": 5,
+        "max_finding_path_bytes": 16384,
+        "max_findings_retained": 10000,
+        "max_git_detection_ancestor_steps": 256,
+        "max_git_stderr_bytes": 65536,
+        "max_git_stdout_bytes": 4194304,
+        "max_names_per_directory": 10000,
+        "max_native_read_bytes": 10485760,
+        "max_remediation_bytes": 8192,
+        "max_retained_inventory_entries": 100000,
+        "max_safe_message_bytes": 2048,
+        "max_title_bytes": 8192,
+        "overall_scan_timeout_ms": 300000,
+        "sec001_max_eligible_bytes": 5242880,
+        "symlink_resolution_steps": 40
+      }
+    },
+    "traversal": {
+      "examined_entries": 5,
+      "discovered_files": 4,
+      "discovered_directories": 2,
+      "inventory_complete": true,
+      "root_listing_complete": true
+    },
+    "reasons": [],
+    "checks": [
+      {
+        "rule_id": "FILE-001",
+        "check_ver": "0.2.0",
+        "status": "completed",
+        "eligible_files": 4,
+        "inspected_files": 4,
+        "read_bytes": 0,
+        "reason_counts": []
+      },
+      {
+        "rule_id": "FILE-002",
+        "check_ver": "0.2.0",
+        "status": "completed",
+        "eligible_files": 4,
+        "inspected_files": 4,
+        "read_bytes": 0,
+        "reason_counts": []
+      },
+      {
+        "rule_id": "GIT-001",
+        "check_ver": "0.2.0",
+        "status": "completed",
+        "eligible_files": 1,
+        "inspected_files": 1,
+        "read_bytes": 46,
+        "reason_counts": []
+      },
+      {
+        "rule_id": "GIT-002",
+        "check_ver": "0.2.0",
+        "status": "not_applicable",
+        "eligible_files": 0,
+        "inspected_files": 0,
+        "read_bytes": 0,
+        "reason_counts": []
+      },
+      {
+        "rule_id": "PROJ-001",
+        "check_ver": "0.2.0",
+        "status": "completed",
+        "eligible_files": 0,
+        "inspected_files": 0,
+        "read_bytes": 0,
+        "reason_counts": []
+      },
+      {
+        "rule_id": "PROJ-002",
+        "check_ver": "0.1.0",
+        "status": "completed",
+        "eligible_files": 4,
+        "inspected_files": 4,
+        "read_bytes": 0,
+        "reason_counts": []
+      },
+      {
+        "rule_id": "SEC-001",
+        "check_ver": "0.2.0",
+        "status": "completed",
+        "eligible_files": 4,
+        "inspected_files": 4,
+        "read_bytes": 252,
+        "reason_counts": []
+      }
+    ],
+    "findings_retained": 4,
+    "findings_truncated": false,
+    "diagnostic_examples_omitted": 0
+  },
+  "diagnostics": []
+}

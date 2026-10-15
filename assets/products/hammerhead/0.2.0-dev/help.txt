@@ -1,0 +1,19 @@
+Hammerhead inspects software repositories for security risks,
+sensitive files, credential exposure, and hygiene issues.
+
+It produces clear, actionable findings with severity levels,
+explanations, and remediation guidance.
+
+Usage:
+  hammerhead [command]
+
+Available Commands:
+  audit       Run security checks against a repository
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  version     Print Hammerhead version information
+
+Flags:
+  -h, --help   help for hammerhead
+
+Use "hammerhead [command] --help" for more information about a command.

@@ -1,0 +1,10 @@
+git clone --branch v0.2-dev https://github.com/talarurus/hammerhead.git
+cd hammerhead
+git checkout --detach 4fa1018b13ed4b8b6af194a326105e098dc8118f
+git rev-parse HEAD
+preview_dir=$(mktemp -d)
+go build -mod=readonly -trimpath \
+  -ldflags "-X github.com/talarurus/hammerhead/internal/cli.Version=0.2.0-dev -X github.com/talarurus/hammerhead/internal/cli.Commit=4fa1018b13ed4b8b6af194a326105e098dc8118f" \
+  -o "$preview_dir/hammerhead" ./cmd/hammerhead
+"$preview_dir/hammerhead" version
+"$preview_dir/hammerhead" --help

@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hammerhead v0.1.0 release | Talarurus</title>
-    <meta name="description" content="Hammerhead v0.1.0 commands, reporting, and release information from Talarurus.">
+    <title>Hammerhead preview and downloads | Talarurus</title>
+    <meta name="description" content="Hammerhead 0.2.0-dev developer preview availability, pinned source build, and inactive future macOS and Linux downloads.">
     <link rel="canonical" href="https://talarurus.com/hammerhead/release/">
     <meta name="theme-color" content="#f7f5f0">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Talarurus">
-    <meta property="og:title" content="Hammerhead v0.1.0 release | Talarurus">
-    <meta property="og:description" content="Hammerhead v0.1.0 commands, reporting, and release information from Talarurus.">
+    <meta property="og:title" content="Hammerhead preview and downloads | Talarurus">
+    <meta property="og:description" content="Hammerhead 0.2.0-dev developer preview availability, pinned source build, and inactive future macOS and Linux downloads.">
     <meta property="og:url" content="https://talarurus.com/hammerhead/release/">
     <meta property="og:image" content="https://talarurus.com/assets/og.png">
     <meta property="og:image:width" content="1200">
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/site.js" defer></script>
   </head>
-  <body class="page-hammerhead/release">
+  <body class="page-hammerhead page-hammerhead-release">
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="header">
       <div class="wrap header-inner"><a class="brand" href="/" aria-label="Talarurus home"><img src="/assets/talarurus-logo.svg" width="116" height="28" alt="Talarurus"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" hidden>Menu <span aria-hidden="true">+</span></button>
@@ -33,54 +33,21 @@
     </header>
     <main id="main" tabindex="-1">
       <div class="auxiliary">
-        <section class="page-hero">
-          <div class="wrap">
-            <p class="kicker">HAMMERHEAD / RELEASE</p>
-            <h1>Hammerhead v0.1.0</h1>
-            <p class="lead">The first release of Talarurus’s local-first repository security auditing CLI.</p>
-            <div class="actions"><a class="button primary" href="/hammerhead/docs/">Read documentation →</a><a class="button" href="/contact/">Contact Talarurus →</a></div>
+        <section class="page-hero"><div class="wrap"><p class="kicker">HAMMERHEAD / DEVELOPER PREVIEW</p><h1>Source today.<br> Downloads when verified.</h1><p class="lead">Current version: 0.2.0-dev. An experimental local-first repository auditing CLI for controlled development and testing.</p><div class="actions"><a class="button primary" href="/hammerhead/docs/#build">Build the preview →</a><a class="button" href="https://github.com/talarurus/hammerhead">GitHub source ↗</a></div><p class="availability-note">No verified v0.2 binary release is available here. Full untrusted-repository security qualification and release CI are still pending.</p></div></section>
+        <section class="aux-section"><div class="wrap">
+          <div class="split"><div><h2>Preview details</h2></div><dl class="facts"><div><dt>Version</dt><dd>0.2.0-dev</dd></div><div><dt>Status</dt><dd>Developer preview · source build</dd></div><div><dt>Platforms</dt><dd>macOS and Linux · ARM64 and AMD64 targets</dd></div><div><dt>Verified run</dt><dd>macOS Apple Silicon · Go 1.26.9 · synthetic fixture</dd></div><div><dt>License</dt><dd>Apache 2.0</dd></div></dl></div>
+          <div class="prose"><h2 id="downloads">Future versioned downloads</h2><p>These controls stay inactive until actual versioned artifacts and their verification material exist. Building or targeting a platform does not qualify its release artifact.</p></div>
+          <div class="panel-grid platform-grid">
+            <article class="panel"><p class="kicker">DARWIN / ARM64</p><h3>Apple Silicon</h3><p>macOS source target. Native controlled smoke test completed; release artifact pending.</p><button class="button" type="button" disabled>Apple Silicon download unavailable</button></article>
+            <article class="panel"><p class="kicker">DARWIN / AMD64</p><h3>Intel Mac</h3><p>macOS source target. Native release validation and artifact verification pending.</p><button class="button" type="button" disabled>Intel Mac download unavailable</button></article>
+            <article class="panel"><p class="kicker">LINUX / ARM64</p><h3>Linux ARM64</h3><p>Linux source target. Native release validation and artifact verification pending.</p><button class="button" type="button" disabled>Linux ARM64 download unavailable</button></article>
+            <article class="panel"><p class="kicker">LINUX / AMD64</p><h3>Linux AMD64</h3><p>Linux source target. Native release validation and artifact verification pending.</p><button class="button" type="button" disabled>Linux AMD64 download unavailable</button></article>
           </div>
-        </section>
-        <section class="aux-section">
-          <div class="wrap">
-            <div class="split">
-              <div>
-                <h2>Release details</h2>
-              </div>
-              <dl class="facts">
-                <div>
-                  <dt>Version</dt>
-                  <dd>0.1.0</dd>
-                </div>
-                <div>
-                  <dt>Status</dt>
-                  <dd>Released</dd>
-                </div>
-                <div>
-                  <dt>Next</dt>
-                  <dd>Iteration in development</dd>
-                </div>
-                <div>
-                  <dt>Platforms</dt>
-                  <dd>macOS and Linux, amd64 and arm64</dd>
-                </div>
-                <div>
-                  <dt>License</dt>
-                  <dd>Apache 2.0</dd>
-                </div>
-              </dl>
-            </div>
-            <div class="prose">
-              <h2>Distribution</h2>
-              <p class="availability-note">Public download link unavailable</p>
-              <p>For questions about obtaining Hammerhead v0.1.0, <a href="/contact/">contact Talarurus</a>.</p>
-              <h2>In this release</h2>
-              <p>Local working-tree audits, separate Security, Hygiene, and Info findings, terminal and JSON reports, configurable failure thresholds, and SafeWalker traversal.</p>
-              <h2>Clear expectations</h2>
-              <p>A threshold result is not a guarantee that a repository is safe. Review scan limits and reported check errors alongside the findings.</p>
-              <a class="text-link" href="/hammerhead/docs/#security-model">Read the security model →</a></div>
-          </div>
-        </section>
+          <div class="prose"><h2 id="verification">Checksums and verification</h2><p>No release checksum manifest or signature is offered for this preview. An eventual release must identify its exact version and source commit, publish a SHA-256 manifest for the actual archives, and document the authenticity checks that are available. Checksums detect byte differences; they do not independently establish publisher identity.</p>
+          <h2 id="installation">Installation after a qualified release</h2><ol><li>Select the exact versioned archive for the operating system and architecture.</li><li>Verify its SHA-256 against the published manifest using <code>shasum -a 256</code> on macOS or <code>sha256sum</code> on Linux. Complete any documented signature/authenticity checks before running it.</li><li>Extract the verified archive into a new directory, review its included instructions, and place the executable in a user-owned directory on PATH.</li><li>Run <code>hammerhead version</code>, compare the version and commit to the release notes, then test a controlled fixture.</li></ol><p>These are future release steps. For the current preview, use the <a href="/hammerhead/docs/#build">commit-pinned self-build guide</a>.</p>
+          <h2>Historical v0.1.0</h2><p>The site retains an explicitly labeled <a href="/hammerhead/#historical-demo">v0.1.0 demonstration</a>. Its original schema and behavior do not describe v0.2. Legacy download destinations are not offered as current installation options.</p>
+          <h2>Before public downloads</h2><p>Complete full untrusted-repository security qualification and release CI, resolve release blockers, validate native macOS/Linux behavior on each offered architecture, then build and verify versioned artifacts, checksums, and release instructions. Website download links must be checked against those exact published files before activation.</p></div>
+        </div></section>
       </div>
     </main>
     <footer class="footer">

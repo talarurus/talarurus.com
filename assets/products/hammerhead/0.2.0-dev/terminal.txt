@@ -1,0 +1,105 @@
+
+HAMMERHEAD SECURITY AUDIT
+  Repository:  demo-repository
+  Path:        <fixture-root>/demo-repository
+  Checks run:  7
+Status: COMPLETED
+  Coverage: examined 5 entries; files 4; directories 2
+  Inventory complete: true; root listing complete: true
+  Findings retained: 4; truncated: false; diagnostic examples omitted: 0
+  Policy: 15 exclusions; 26 applied limits
+Check [FILE-001]: completed; eligible 4; inspected 4; read bytes 0
+Check [FILE-002]: completed; eligible 4; inspected 4; read bytes 0
+Check [GIT-001]: completed; eligible 1; inspected 1; read bytes 46
+Check [GIT-002]: not_applicable; eligible 0; inspected 0; read bytes 0
+Check [PROJ-001]: completed; eligible 0; inspected 0; read bytes 0
+Check [PROJ-002]: completed; eligible 4; inspected 4; read bytes 0
+Check [SEC-001]: completed; eligible 4; inspected 4; read bytes 252
+
+  Security risk:          HIGH
+  Security findings:      2
+  Hygiene observations:   1
+  Informational context:  1
+  ─────────────────────
+  CRITICAL   0
+  HIGH       2
+  MEDIUM     0
+  LOW        1
+  INFO       1
+  ─────────────────────
+
+  === SECURITY FINDINGS (2) ===
+
+  HIGH
+
+  [FILE-001] Potential private key file
+    Location:     certs/demo.key
+    Evidence:     demo.key
+    Confidence:   medium
+
+    Why it matters:
+      The filename has a .key extension, which may indicate a private
+      key or unrelated data. This is a filename-only match; contents
+      were not inspected.
+
+    Remediation:
+      Review the actual contents. If sensitive information is present,
+      keep it outside version control and add an appropriate ignore
+      pattern. Determine whether exposure occurred before deciding on
+      credential rotation or other recovery steps.
+
+  [SEC-001] Supported private-key header detected
+    Location:     certs/demo.key:1
+    Evidence:     -----BEGIN PRIVATE KEY----- [KEY DATA REDACTED]
+    Confidence:   high
+
+    Why it matters:
+      A supported private-key header (-----BEGIN PRIVATE KEY-----) was
+      detected in file content. The header alone does not establish that
+      the file contains a valid or usable private key. Tracking,
+      exposure, and compromise were not established.
+
+    Remediation:
+      Review the contents to determine whether this is a real private
+      key. If so, keep it outside shared source files and determine
+      whether exposure occurred. If exposure is confirmed, replace the
+      affected key and review its use.
+
+  === HYGIENE OBSERVATIONS (1) ===
+
+  LOW
+
+  [PROJ-001] Missing project LICENSE
+    Location:     LICENSE
+    Evidence:     File not found in root directory
+    Confidence:   high
+
+    Why it matters:
+      No recognized license filename was found at the audited root.
+      License terms may be provided elsewhere. This check does not
+      evaluate license contents, adequacy, or legal suitability, even
+      when a recognized filename is present.
+
+    Remediation:
+      Review where the project's license terms are documented and
+      whether they are appropriate for its intended use. If needed, add
+      a root license file with reviewed terms; a filename alone does not
+      establish licensing rights.
+
+  === INFORMATIONAL CONTEXT (1) ===
+
+  INFO
+
+  [PROJ-002] Project runtime: Go
+    Location:     go.mod
+    Evidence:     go.mod
+    Confidence:   high
+
+    Why it matters:
+      Identified Go project ecosystem from manifest file 'go.mod'.
+
+    Remediation:
+      Informational: project context identified for scanner workflows.
+
+  4 finding(s) in 7 check(s)
+

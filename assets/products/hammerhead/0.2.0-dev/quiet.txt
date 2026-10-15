@@ -1,0 +1,4 @@
+[HIGH] [FILE-001] certs/demo.key Potential private key file
+[HIGH] [SEC-001] certs/demo.key:1 Supported private-key header detected
+[LOW] [PROJ-001] LICENSE Missing project LICENSE
+[INFO] [PROJ-002] go.mod Project runtime: Go

@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hammerhead documentation | Talarurus</title>
-    <meta name="description" content="Hammerhead v0.1.0 commands, reporting, and release information from Talarurus.">
+    <meta name="description" content="Build Hammerhead 0.2.0-dev from a pinned development commit. Commands, verified output, scan coverage, exit status, and experimental preview limitations.">
     <link rel="canonical" href="https://talarurus.com/hammerhead/docs/">
     <meta name="theme-color" content="#f7f5f0">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Talarurus">
     <meta property="og:title" content="Hammerhead documentation | Talarurus">
-    <meta property="og:description" content="Hammerhead v0.1.0 commands, reporting, and release information from Talarurus.">
+    <meta property="og:description" content="Build Hammerhead 0.2.0-dev from a pinned development commit. Commands, verified output, scan coverage, exit status, and experimental preview limitations.">
     <meta property="og:url" content="https://talarurus.com/hammerhead/docs/">
     <meta property="og:image" content="https://talarurus.com/assets/og.png">
     <meta property="og:image:width" content="1200">
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/site.js" defer></script>
   </head>
-  <body class="page-hammerhead/docs">
+  <body class="page-hammerhead page-hammerhead-docs">
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="header">
       <div class="wrap header-inner"><a class="brand" href="/" aria-label="Talarurus home"><img src="/assets/talarurus-logo.svg" width="116" height="28" alt="Talarurus"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" hidden>Menu <span aria-hidden="true">+</span></button>
@@ -33,81 +33,89 @@
     </header>
     <main id="main" tabindex="-1">
       <div class="auxiliary">
-        <section class="page-hero">
-          <div class="wrap">
-            <p class="kicker">HAMMERHEAD / V0.1.0 DOCUMENTATION</p>
-            <h1>Start with a local audit.</h1>
-            <p class="lead">Commands, reporting, and boundaries for the v0.1.0 CLI.</p>
-          </div>
-        </section>
-        <section class="aux-section">
-          <div class="wrap doc">
-            <nav class="toc" aria-label="On this page">
-              <h2>On this page</h2>
-              <ol>
-                <li><a href="#quick-start">Quick start</a></li>
-                <li><a href="#reports">Reports and exits</a></li>
-                <li><a href="#security-model">Security model</a></li>
-                <li><a href="#limits">Limitations</a></li>
-              </ol>
-            </nav>
-            <div class="prose">
-              <h2 id="quick-start">Quick start</h2>
-              <p>With the v0.1.0 executable on your PATH, verify the installed version:</p>
-              <div class="command-list">
-                <article><code>hammerhead version</code></article>
-              </div>
-              <p>Audit the current working tree:</p>
-              <div class="command-list">
-                <article><code>hammerhead audit .</code></article>
-              </div>
-              <p>Write structured JSON:</p>
-              <div class="command-list">
-                <article><code>hammerhead audit . --output json &gt; audit.json</code></article>
-              </div>
-              <p>Use <code>--quiet</code> for compact finding lines. Quiet mode omits the summary.</p>
-              <h2 id="reports">Reports and exit status</h2>
-              <p>The default failure threshold is high. Security findings alone affect finding-based failure; Hygiene and Info do not.</p>
-              <ul>
-                <li>0: No Security finding reached the selected threshold.</li>
-                <li>1: At least one Security finding reached the selected threshold.</li>
-                <li>2: CLI or operational failure, such as an invalid target or flag.</li>
-              </ul>
-              <p>Check errors can be recorded while other checks continue. They do not automatically force status 2. A successful threshold result is not a guarantee of safety or complete coverage.</p>
-              <p>JSON uses schema <code>hammerhead/v0.1</code>. Reports include version, repository metadata, summary, findings, and reported check errors.</p>
-              <h2 id="security-model">Security model</h2>
-              <p>Hammerhead inspects the target working tree without running its build scripts, package managers, hooks, or binaries. SafeWalker uses guarded file reads and symlink containment checks relative to the target root.</p>
-              <p>Default traversal limits are depth 50 and 100,000 discovered entries. Content reads are bounded at 10 MiB. Common generated/dependency directories and .git are excluded. These are defense-in-depth measures, not a sandbox.</p>
-              <h2 id="limits">Limitations</h2>
-              <ul>
-                <li>Scans the current working tree, not Git history.</li>
-                <li>Matches supported credential patterns; does not validate active credentials.</li>
-                <li>No CVE/dependency database scanning or semantic SAST analysis.</li>
-                <li>Does not unpack archives. Binary and oversized content is outside normal secret-content inspection.</li>
-                <li>Exclusions, unreadable files, partial traversal, and check failures can limit coverage.</li>
-              </ul>
-              <h2>Command help</h2>
-              <pre class="help-output">Audit inspects the target directory for security risks including
+        <section class="page-hero"><div class="wrap"><p class="kicker">HAMMERHEAD / 0.2.0-dev DOCUMENTATION</p><h1>Build locally.<br> Inspect deliberately.</h1><p class="lead">An experimental developer preview for controlled development and testing. Seven checks, terminal and JSON reporting, and explicit scan coverage.</p><div class="actions"><a class="button primary" href="#build">Self-build guide →</a><a class="button" href="https://github.com/talarurus/hammerhead">GitHub source ↗</a></div></div></section>
+        <section class="aux-section"><div class="wrap doc">
+          <nav class="toc" aria-label="On this page"><h2>On this page</h2><ol>
+            <li><a href="#build">Build the preview</a></li><li><a href="#quick-start">Run a controlled audit</a></li><li><a href="#reports">Reports and exits</a></li><li><a href="#verified-demo">Verified demonstration</a></li><li><a href="#security-model">Security model</a></li><li><a href="#limits">Limitations</a></li><li><a href="#help">Command help</a></li>
+          </ol></nav>
+          <div class="prose">
+            <h2 id="build">Build the developer preview</h2>
+            <p><strong>0.2.0-dev is experimental.</strong> Full untrusted-repository security qualification and release CI are still pending. Use controlled fixtures and development environments. A local smoke test is not a security release qualification.</p>
+            <p>Prerequisites: macOS or Linux, Git, and Go 1.26.0 or newer. This capture used installed Go 1.26.9 on macOS Apple Silicon. The source targets macOS and Linux on ARM64 and AMD64; other native runtimes were not exercised by this demonstration.</p>
+            <p>Use the existing checkout if already present. For a new checkout, clone the official source below. Pin to the reviewed development commit, then compare <code>git rev-parse HEAD</code> with the full hash before building. Do not substitute a moving branch tip.</p>
+            <p class="preview-commit">Reviewed commit: <code>4fa1018b13ed4b8b6af194a326105e098dc8118f</code></p>
+            <pre class="help-output">git clone --branch v0.2-dev https://github.com/talarurus/hammerhead.git
+cd hammerhead
+git checkout --detach 4fa1018b13ed4b8b6af194a326105e098dc8118f
+git rev-parse HEAD
+preview_dir=$(mktemp -d)
+go build -mod=readonly -trimpath \
+  -ldflags &quot;-X github.com/talarurus/hammerhead/internal/cli.Version=0.2.0-dev -X github.com/talarurus/hammerhead/internal/cli.Commit=4fa1018b13ed4b8b6af194a326105e098dc8118f&quot; \
+  -o &quot;$preview_dir/hammerhead&quot; ./cmd/hammerhead
+&quot;$preview_dir/hammerhead&quot; version
+&quot;$preview_dir/hammerhead&quot; --help</pre>
+            <button class="copy" type="button" data-copy="git clone --branch v0.2-dev https://github.com/talarurus/hammerhead.git
+cd hammerhead
+git checkout --detach 4fa1018b13ed4b8b6af194a326105e098dc8118f
+git rev-parse HEAD
+preview_dir=$(mktemp -d)
+go build -mod=readonly -trimpath \
+  -ldflags &quot;-X github.com/talarurus/hammerhead/internal/cli.Version=0.2.0-dev -X github.com/talarurus/hammerhead/internal/cli.Commit=4fa1018b13ed4b8b6af194a326105e098dc8118f&quot; \
+  -o &quot;$preview_dir/hammerhead&quot; ./cmd/hammerhead
+&quot;$preview_dir/hammerhead&quot; version
+&quot;$preview_dir/hammerhead&quot; --help" hidden>Copy build commands</button>
+            <p>The binary is written to a temporary directory outside the source tree. Go may retrieve module dependencies when they are absent from its local cache. There is no remote installer or downloadable v0.2 executable.</p>
+            <p>Expected version:</p><pre class="help-output">hammerhead version 0.2.0-dev (commit: 4fa1018b13ed4b8b6af194a326105e098dc8118f)</pre>
+            <p><a href="https://github.com/talarurus/hammerhead/tree/4fa1018b13ed4b8b6af194a326105e098dc8118f">Browse the pinned source ↗</a> · <a href="/hammerhead/release/">Platform and future download status →</a></p>
+            <h2 id="quick-start">Run a controlled audit</h2>
+            <p>Create <code>demo-repository</code> from the <a href="/assets/products/hammerhead/0.2.0-dev/fixture.txt">synthetic fixture specification</a>. In the directory containing it, run the temporary binary built above:</p>
+            <pre class="help-output">"$preview_dir/hammerhead" audit ./demo-repository
+"$preview_dir/hammerhead" audit ./demo-repository --quiet</pre>
+            <p>Write JSON outside the audited tree and retain the scanner’s status. The following block uses shell variables from the build step:</p>
+            <pre class="help-output">report_dir=$(mktemp -d)
+if "$preview_dir/hammerhead" audit ./demo-repository --output json &gt; "$report_dir/audit.json"; then
+  audit_status=0
+else
+  audit_status=$?
+fi
+printf 'Hammerhead exit: %s\nReport: %s\n' "$audit_status" "$report_dir/audit.json"</pre>
+            <p>The intentional Security findings in this fixture produce exit 1. In automation, propagate <code>audit_status</code> after inspecting or storing the report. A setup or output failure may leave no complete JSON document.</p>
+            <h2 id="reports">Reports and exit status</h2>
+            <p>Default output is terminal. <code>--quiet</code> sends compact findings to stdout and status, coverage, and diagnostics to stderr. <code>--output json</code> writes one <code>hammerhead/v0.2</code> document to stdout when output succeeds.</p>
+            <ul><li><strong>0:</strong> completed scan; no Security finding met the threshold, or finding failure was disabled.</li><li><strong>1:</strong> completed scan; a Security finding met <code>--fail-on</code> (high by default).</li><li><strong>2:</strong> partial, failed, or cancelled scan; invalid invocation; or output failure. This overrides finding status.</li></ul>
+            <p><code>--fail-on none</code> suppresses finding exit 1 only. Hygiene and Info never trigger exit 1. Partial results can retain useful findings; they do not establish a completed audit.</p>
+            <p>Read <code>status</code>, <code>threshold</code>, <code>coverage</code>, and <code>diagnostics</code> together. Coverage records applied exclusions and limits, observed traversal, per-check work, reasons for incomplete work, and truncation. It is not a percentage of repository safety. A completed scan is complete within its declared policy.</p>
+            <h2 id="verified-demo">Verified demonstration</h2>
+            <p>Built and run on macOS Apple Silicon on 14 October 2026 from commit <code>4fa1018b13ed</code>. The ordinary synthetic directory contains four files and no Git metadata; the key header is deliberately invalid key data.</p>
+            <ul><li>Terminal, quiet, and JSON: <strong>completed, exit 1</strong>; 4 findings (2 Security/high, 1 Hygiene/low, 1 Info/info).</li><li>Coverage: 5 examined entries, 4 files, 2 directories including the root; inventory and root listing complete.</li><li>7 checks attempted: 6 completed, GIT-002 not applicable. No truncation, incomplete reasons, or diagnostics.</li><li>The same scan with <code>--fail-on none</code>: completed, exit 0. A separate depth-limit fixture: partial, exit 2 even with that flag. A nonexistent target: exit 2.</li></ul>
+            <p><a href="/assets/products/hammerhead/0.2.0-dev/terminal.txt">Full terminal capture</a> · <a href="/assets/products/hammerhead/0.2.0-dev/quiet.txt">Quiet stdout</a> · <a href="/assets/products/hammerhead/0.2.0-dev/quiet-coverage.txt">Quiet stderr</a> · <a href="/assets/products/hammerhead/0.2.0-dev/audit.json">Full JSON report</a> · <a href="/assets/products/hammerhead/0.2.0-dev/fixture.txt">Fixture</a> · <a href="/assets/products/hammerhead/0.2.0-dev/provenance.txt">Capture provenance</a></p>
+            <p>Only the absolute fixture root is normalized to <code>&lt;fixture-root&gt;/demo-repository</code> in the full terminal and JSON captures. Findings and counts are unchanged. The product page shows quiet stdout, an explicitly labeled stderr excerpt, and selected JSON fields. <a href="/hammerhead/#historical-demo">Historical v0.1.0 output</a> retains its original wording and schema.</p>
+            <h2 id="security-model">Security model</h2>
+            <p>Hammerhead inspects the working tree without running the target’s build scripts, package managers, hooks, or binaries. It reads repository data and can invoke the installed Git executable for constrained repository context. Native guarded reads and traversal policy are defense in depth; Hammerhead is not an OS sandbox.</p>
+            <p>Use a trusted Git installation and ordinary controlled local filesystems. Hard links, mount crossings, filesystem behavior, and uninterruptible kernel I/O limit containment and cancellation guarantees. Do not use this preview as authorization to execute an untrusted repository.</p>
+            <h2 id="limits">Limitations</h2>
+            <ul><li>Current working tree only; no Git-history, CVE/dependency-database, or semantic SAST scan.</li><li>Filename, header, assignment, and manifest observations are heuristics. Credentials are not validated; validity, pairing, exposure, tracking, and compromise are not established.</li><li>Gitignore checks inspect supported textual patterns; they do not evaluate Git’s full ignore behavior. License filename detection does not evaluate legal suitability.</li><li>Archives are not unpacked. Binary content and SEC-001 files above 5 MiB are outside normal secret-content inspection. Built-in and user exclusions reduce scope.</li><li>Default bounds include depth 50, 100,000 examined entries, 10 MiB per native read, 256 MiB aggregate native reads, 10,000 retained findings, and a five-minute scan deadline. <code>--max-file-size</code> changes FILE-002’s large-file threshold, not those content-read bounds.</li><li>Unreadable or changed eligible files, exhausted budgets, check failures, and available Git operations that fail can make the scan partial. No whole-process memory cap or guaranteed interruption of blocked I/O is promised.</li></ul>
+            <p><a href="/hammerhead/#checks">The seven existing checks →</a> · <a href="/security/">Report vulnerabilities privately →</a></p>
+            <h2 id="help">Command help</h2><p>Actual <code>hammerhead audit --help</code> output from this build:</p><pre class="help-output">Audit inspects the target directory for security risks including
 sensitive files, credential exposure, and repository hygiene issues.
 
-By default, the exit code is non-zero if any HIGH or CRITICAL findings
-are detected. Use --fail-on to change this threshold.
+Completed scans exit 1 when a Security finding meets --fail-on (high by default).
+Incomplete scans and output failures exit 2, including with --fail-on none.
+Quiet mode sends compact findings to stdout and status/coverage to stderr.
 
 Usage:
   hammerhead audit [path] [flags]
 
 Flags:
   -e, --exclude stringArray    Exclude paths matching pattern (repeatable)
-      --fail-on string         Minimum severity for non-zero exit: critical, high, medium, low, info, none (default "high")
+      --fail-on string         Security severity for exit 1: critical, high, medium, low, info, none (operational failures exit 2) (default &quot;high&quot;)
   -h, --help                   help for audit
       --max-file-size string   Override large file threshold for FILE-002 (e.g. 50MB, 10MB)
-  -o, --output string          Output format: terminal, json (default "terminal")
+  -o, --output string          Output format: terminal, json (default &quot;terminal&quot;)
   -q, --quiet                  Quiet mode: print compact findings without decorative banners
 </pre>
-              <p><a href="/security/">Report vulnerabilities privately</a>.</p>
-            </div>
           </div>
-        </section>
+        </div></section>
       </div>
     </main>
     <footer class="footer">

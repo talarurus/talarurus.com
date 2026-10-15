@@ -1,0 +1,12 @@
+[STATUS] COMPLETED
+[COVERAGE] Coverage: examined 5 entries; files 4; directories 2
+[COVERAGE] Inventory complete: true; root listing complete: true
+[COVERAGE] Findings retained: 4; truncated: false; diagnostic examples omitted: 0
+[COVERAGE] Policy: 15 exclusions; 26 applied limits
+[COVERAGE] Check [FILE-001]: completed; eligible 4; inspected 4; read bytes 0
+[COVERAGE] Check [FILE-002]: completed; eligible 4; inspected 4; read bytes 0
+[COVERAGE] Check [GIT-001]: completed; eligible 1; inspected 1; read bytes 46
+[COVERAGE] Check [GIT-002]: not_applicable; eligible 0; inspected 0; read bytes 0
+[COVERAGE] Check [PROJ-001]: completed; eligible 0; inspected 0; read bytes 0
+[COVERAGE] Check [PROJ-002]: completed; eligible 4; inspected 4; read bytes 0
+[COVERAGE] Check [SEC-001]: completed; eligible 4; inspected 4; read bytes 252

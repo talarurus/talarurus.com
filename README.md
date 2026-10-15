@@ -17,11 +17,11 @@ Open http://localhost:8000. Cloudflare applies the security response headers in
 
 ## Website structure
 
-- `/`: studio homepage, featured Hammerhead release, and work in development.
+- `/`: studio homepage, featured Hammerhead developer preview, and work in development.
 - `/work/`: released and in-development projects.
-- `/hammerhead/`: product overview and actual v0.1.0 CLI demonstrations.
-- `/hammerhead/docs/`: commands, reports, security model, and limitations.
-- `/hammerhead/release/`: verified release information and availability.
+- `/hammerhead/`: 0.2.0-dev overview, verified current output, seven checks, and labeled historical v0.1.0 output.
+- `/hammerhead/docs/`: pinned preview self-build, commands, reports, security model, and limitations.
+- `/hammerhead/release/`: preview availability and inactive future macOS/Linux downloads.
 - `/products/plainbalance/`: plainbalance v0.3.1 Developer Preview, features, platform
   status, security limitations, planned releases, and public GitHub source.
 - `/about/`: studio background and founder identity.
@@ -42,8 +42,9 @@ canonical, monochrome brand assets; do not redraw or recolor them.
 
 `js/site.js` enhances mobile navigation, accessible Terminal/JSON report tabs,
 and clipboard controls. Links and essential content remain usable without
-JavaScript. Product demonstrations preserve actual Hammerhead v0.1.0 output on a
-synthetic fixture with no usable credentials. The JSON panel is a summary excerpt.
+JavaScript. Hammerhead captures use synthetic fixtures with no usable credentials. The product
+page shows verified 0.2.0-dev output; historical v0.1.0 captures stay explicitly
+labeled on the homepage, Work, and product history. JSON panels are labeled excerpts.
 
 `js/landscape.js` draws the existing deterministic ASCII valley in the hero,
 caching geometry on resize and animating cached layers at up to 20 fps with a
@@ -87,13 +88,53 @@ also opts out of edge payload transformations, which can affect compression.
 See Cloudflare's [Web Analytics FAQ](https://developers.cloudflare.com/web-analytics/faq/)
 and [email obfuscation documentation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/).
 
-## Hammerhead distribution follow-up
+## Hammerhead developer preview
 
-No verified public repository or download URL is currently available. Product
-pages use a non-clickable availability status and working local documentation.
-The owner must provide a verified, anonymously accessible destination before a
-download link is added. Do not publish Hammerhead source or release binaries as
-part of a website deployment.
+Current version is **0.2.0-dev**, an experimental developer preview for controlled
+development/testing. Official source: https://github.com/talarurus/hammerhead.
+The guide pins the reviewed development commit `4fa1018b13ed4b8b6af194a326105e098dc8118f`.
+No v0.2 release binary, remote installation script, or checksum download is offered.
+The four platform controls at `/hammerhead/release/` are disabled until verified
+versioned artifacts exist. Full untrusted-repository security qualification and
+release CI are still pending. Do not treat this smoke test as release approval.
+
+Sanitized actual captures, a fixture specification, and provenance live in
+`assets/products/hammerhead/0.2.0-dev/`. Only the absolute fixture-root path is
+normalized in terminal/JSON captures; wording, counts and timestamps are unchanged.
+The demo was built outside Hammerhead using installed Go 1.26.9 on macOS ARM64.
+Version/help exit 0; terminal/quiet/JSON scans complete with exit 1 and four
+findings. Coverage has 5 examined entries, 4 files, 2 directories, complete
+inventory and root listing, 6 completed checks and one not-applicable Git check,
+no truncation and no diagnostics. `--fail-on none` returns completed/0; a separate
+controlled depth-limit fixture returns partial/2 even with that flag; a missing
+target returns 2. The protected Hammerhead checkout remains unchanged.
+
+Review locally using the existing static-server process:
+
+```sh
+python3 -m http.server 4183 --bind 127.0.0.1
+```
+
+Open http://127.0.0.1:4183/hammerhead/, `/hammerhead/docs/`, and
+`/hammerhead/release/`, plus `/` and `/work/`. Review at desktop, tablet and
+mobile widths; test menu keyboard handling, Terminal/JSON arrow keys, copy
+commands, the build-block copy button, and inactive downloads. Ctrl-C stops it.
+The basic server does not emulate Cloudflare headers or redirects.
+
+This preparation session could not bind a local server (sandbox `Operation not
+permitted`) or launch Chromium (macOS Mach-port `Permission denied`). Responsive
+browser screenshots and rendered accessibility checks therefore remain pending.
+Outbound DNS/GitHub checks were also unavailable; source links match the local
+Git remote and owner-provided repository, but anonymous access needs rechecking.
+Static route/fragment checks and script interaction checks are recorded in the
+local handoff report outside the served website. Do not push or deploy until
+preview review is complete. Preserve the website's pre-existing unrelated edits.
+
+Before public downloads, complete security qualification and release CI, resolve
+release blockers, validate each offered native architecture, publish exact
+versioned archives plus checksums and authenticity instructions, then verify each
+actual URL and enable only the corresponding controls. Do not invent download
+URLs or relabel historical v0.1.0 output.
 
 ## Maintenance and content
 

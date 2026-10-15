@@ -1,0 +1,33 @@
+Controlled synthetic fixture (ordinary directory, no .git):
+
+demo-repository/
+  .gitignore
+  README.md
+  go.mod
+  certs/demo.key
+
+.gitignore (UTF-8):
+.env
+.env.*
+*.key
+*.pem
+node_modules/
+vendor/
+
+README.md (UTF-8):
+# Synthetic Hammerhead preview fixture
+No usable credentials.
+
+go.mod (UTF-8):
+module example.invalid/hammerhead-demo
+
+go 1.26.0
+
+certs/demo.key (UTF-8; deliberately invalid key data):
+-----BEGIN PRIVATE KEY-----
+SYNTHETIC DEMO ONLY — NOT A VALID KEY
+-----END PRIVATE KEY-----
+
+Each file ends with one newline. No LICENSE is present.
+The .gitignore is inspected as text; ignored paths are not automatically
+excluded from Hammerhead's native working-tree inventory.

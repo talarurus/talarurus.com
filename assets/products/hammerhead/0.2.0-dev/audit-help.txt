@@ -1,0 +1,17 @@
+Audit inspects the target directory for security risks including
+sensitive files, credential exposure, and repository hygiene issues.
+
+Completed scans exit 1 when a Security finding meets --fail-on (high by default).
+Incomplete scans and output failures exit 2, including with --fail-on none.
+Quiet mode sends compact findings to stdout and status/coverage to stderr.
+
+Usage:
+  hammerhead audit [path] [flags]
+
+Flags:
+  -e, --exclude stringArray    Exclude paths matching pattern (repeatable)
+      --fail-on string         Security severity for exit 1: critical, high, medium, low, info, none (operational failures exit 2) (default "high")
+  -h, --help                   help for audit
+      --max-file-size string   Override large file threshold for FILE-002 (e.g. 50MB, 10MB)
+  -o, --output string          Output format: terminal, json (default "terminal")
+  -q, --quiet                  Quiet mode: print compact findings without decorative banners

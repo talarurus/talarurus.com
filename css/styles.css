@@ -2709,3 +2709,29 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   color: var(--muted);
   background: var(--paper);
 }
+
+/* Hammerhead developer preview, within the established site design. */
+.page-hammerhead .stream-label {
+  color: #abc9ce;
+  font: 10px/1.6 var(--mono);
+  margin: 22px 0 8px;
+}
+.page-hammerhead .report figcaption a { text-decoration: underline; text-underline-offset: 3px; }
+.page-hammerhead .hammerhead-table { overflow-x: auto; }
+.page-hammerhead table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; }
+.page-hammerhead caption { text-align: left; color: var(--muted); padding-bottom: 18px; font: 11px var(--mono); }
+.page-hammerhead th, .page-hammerhead td { padding: 18px 14px; border-bottom: 1px solid var(--line); }
+.page-hammerhead th { font-weight: 500; }
+.page-hammerhead thead { color: var(--muted); }
+.page-hammerhead tbody th { font: 12px var(--mono); white-space: nowrap; }
+.page-hammerhead td { color: var(--muted); }
+.page-hammerhead .preview-commit { overflow-wrap: anywhere; }
+.page-hammerhead .platform-grid { margin-top: 40px; }
+.page-hammerhead .platform-grid .button { margin-top: 12px; height: auto; white-space: normal; text-align: left; }
+.page-hammerhead .historical-report { margin-top: 32px; }
+.page-hammerhead .historical-report summary { cursor: pointer; padding: 16px 0; min-height: 44px; }
+@media (max-width: 680px) {
+  .page-hammerhead .product-hero .kicker .badge { display: table; margin: 12px 0 0; }
+  .page-hammerhead th, .page-hammerhead td { padding: 14px 8px; font-size: 12px; }
+  .page-work #hammerhead .section-heading { flex-wrap: wrap; }
+}

@@ -1,0 +1,40 @@
+Hammerhead developer-preview demonstration
+Version: 0.2.0-dev
+Source: https://github.com/talarurus/hammerhead
+Commit: 4fa1018b13ed4b8b6af194a326105e098dc8118f
+Captured: 2026-10-15T00:08:36Z (2026-10-14 America/New_York)
+Toolchain: go1.26.9 darwin/arm64
+Runtime verified here: macOS Apple Silicon only
+
+Built from the unchanged existing checkout with -mod=readonly -trimpath and
+-X github.com/talarurus/hammerhead/internal/cli.Version=0.2.0-dev
+-X github.com/talarurus/hammerhead/internal/cli.Commit=4fa1018b13ed4b8b6af194a326105e098dc8118f
+Binary, build cache, fixture and original captures were outside the source repo.
+
+Commands (run from the fixture's parent directory):
+hammerhead version                                  exit 0
+hammerhead --help                                   exit 0
+hammerhead audit --help                             exit 0
+hammerhead audit ./demo-repository                  exit 1
+hammerhead audit ./demo-repository --quiet           exit 1
+hammerhead audit ./demo-repository --output json     exit 1
+hammerhead audit ./demo-repository --output json --fail-on none   exit 0
+hammerhead audit ./does-not-exist --output json      exit 2
+
+Completed scan: 5 examined entries, 4 files, 2 directories (including root).
+All 7 checks attempted: 6 completed; GIT-002 not_applicable (non-Git fixture).
+4 retained findings: 2 Security/high, 1 Hygiene/low, 1 Info/info.
+Inventory/root listing complete; no truncation, reasons or diagnostics.
+Quiet findings are stdout; quiet-coverage.txt is stderr from that invocation.
+JSON stdout is one hammerhead/v0.2 document; stderr is empty.
+
+Only the absolute fixture root is normalized in terminal.txt and audit.json,
+to <fixture-root>/demo-repository. Findings, counts and timestamp are unchanged.
+Website JSON is an explicitly selected excerpt of audit.json. The current
+Terminal panel shows exact quiet stdout plus exact initial stderr coverage
+lines, with streams labeled separately. No usable keys or credentials exist.
+
+A separate controlled 52-directory depth fixture returned partial, exit 2,
+even with --fail-on none. Inventory was incomplete; reason budget_exhaustion.
+This smoke test does not qualify arbitrary untrusted repositories or a release.
+Full untrusted-repository security qualification and release CI remain pending.
